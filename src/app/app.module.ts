@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        MatToolbarModule
+        MatToolbarModule,
+        NgbModule
     ],
   providers: [],
   bootstrap: [AppComponent]
