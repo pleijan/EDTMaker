@@ -5,9 +5,9 @@
 
 <div class="container-fluid">
   <div class="row" >
-    <div class="col-3 align-content-center align-items-center align-self-center text-center">
-      <h1 style="text-align: center">Formulaire d'ajout de cours</h1>
-
+    <div class="col-3">
+      <h1 style="text-align: center"><u>Formulaire d'ajout de cours</u></h1>
+      <!--
       <div class="row">
         <div class="col-6">
           <mat-form-field class="example-full-width" appearance="fill">
@@ -22,33 +22,35 @@
             <mat-hint align="end">{{message.value.length}} / 4</mat-hint>
           </mat-form-field>
         </div>
-      </div>
+
 
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label style="color: black">Nombre de cours</mat-label>
         <input matInput type="number">
       </mat-form-field>
-      <mat-checkbox class="example-margin">cocher si le dernier cours est optionnel.</mat-checkbox>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label style="color: black">Nombre de cours opptionel en plus</mat-label>
+        <input matInput type="number" value="0">
+      </mat-form-field>
       <br/>
       <h2>A quel type de cours appartient t'il : </h2>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Type de cours</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let cour of cours" [value]="cour.value">
-            {{cour.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
       <br/>
       <button mat-raised-button color="primary">Valider</button>
+    </div>
 
-
-      <h1 style="text-align: center;margin-top: 50px">Listes des cours actuel</h1>
+      <h1 style="text-align: center;margin-top: 50px">Listes des cours actuel</h1>-->
     </div>
     <div class="col-9">
       <h1 style="text-align: center">Planning de cours</h1>
+
+      <div class="example-list2" >
+        <div class="example-box" *ngFor="let matiere of matieres">{{matiere.nom}}
+          <div cdkDropList class="example-list"  (cdkDropListDropped)="drop($event,matiere)">
+            <div class="example-box2" *ngFor="let cours of matiere.listeCours" cdkDrag>{{cours.nom}}</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
