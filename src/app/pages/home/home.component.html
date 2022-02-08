@@ -37,19 +37,22 @@
       <br/>
       <button mat-raised-button color="primary">Valider</button>
     </div>
-
-      <h1 style="text-align: center;margin-top: 50px">Listes des cours actuel</h1>-->
+-->
+      <h1 style="text-align: center;margin-top: 50px">Listes des cours actuel</h1>
     </div>
-    <div class="col-9">
+    <div class="col-9 ">
       <h1 style="text-align: center">Planning de cours</h1>
 
-      <div class="example-list2" >
-        <div class="example-box" *ngFor="let matiere of matieres">{{matiere.nom}}
+      <div class="example-list2 " >
+        <div class="example-box text-center align-self-center align-items-center align-content-center" *ngFor="let matiere of matieres">{{matiere.nom}}
           <div cdkDropList class="example-list"  (cdkDropListDropped)="drop($event,matiere)">
-            <div class="example-box2" *ngFor="let cours of matiere.listeCours" cdkDrag>{{cours.nom}}</div>
+            <div class="example-box2"*ngFor="let cours of matiere.listeCours" cdkDrag>
+              {{cours.nom}}<br/><div *ngIf="cours.heureDeCours!=0"> {{cours.heureDeCours}}<br/>{{cours.heureAvecDevoir}}</div>
+            </div>
           </div>
         </div>
       </div>
+
 
     </div>
   </div>

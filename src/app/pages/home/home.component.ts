@@ -89,6 +89,7 @@ export class HomeComponent implements OnInit {
   }
   drop(event: CdkDragDrop<string[]>,matiere: matiere) {
     moveItemInArray(matiere.listeCours, event.previousIndex, event.currentIndex);
-    
+    console.log(this.matieres)
   }
+
 }
