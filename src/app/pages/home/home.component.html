@@ -4,46 +4,22 @@
 
 
 <div class="container-fluid">
-  <div class="row" >
-    <div class="col-3">
-      <h1 style="text-align: center"><u>Formulaire d'ajout de cours</u></h1>
-      <!--
-      <div class="row">
-        <div class="col-6">
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label style="color: black">Nom du cours </mat-label>
-            <input matInput >
-          </mat-form-field>
-        </div>
-        <div class="col-6">
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Matricule du cours</mat-label>
-            <input matInput #message maxlength="4" >
-            <mat-hint align="end">{{message.value.length}} / 4</mat-hint>
-          </mat-form-field>
-        </div>
 
-
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label style="color: black">Nombre de cours</mat-label>
-        <input matInput type="number">
-      </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label style="color: black">Nombre de cours opptionel en plus</mat-label>
-        <input matInput type="number" value="0">
-      </mat-form-field>
-      <br/>
-      <h2>A quel type de cours appartient t'il : </h2>
-      <br/>
-      <button mat-raised-button color="primary">Valider</button>
-    </div>
--->
-      <h1 style="text-align: center;margin-top: 50px">Listes des cours actuel</h1>
-    </div>
-    <div class="col-9 ">
       <h1 style="text-align: center">Planning de cours</h1>
 
       <div class="example-list2 " >
+        <div  class="example-box text-center align-self-center align-items-center align-content-center">Semestre :
+          <div   class=" example-list" >
+            <div   class="example-box2"> Semestre 1<br>
+            </div>
+            <div   class="example-box2"> Semestre 2<br >
+            </div>
+            <div  class="example-box2"> Semestre 3<br >
+            </div>
+            <div  class="example-box2"> Semestre 4<br >
+            </div>
+          </div>
+        </div>
         <div class="example-box text-center align-self-center align-items-center align-content-center" *ngFor="let matiere of matieres">{{matiere.nom}}
           <div cdkDropList class="example-list"  (cdkDropListDropped)="drop($event,matiere)">
             <div class="example-box2"*ngFor="let cours of matiere.listeCours" cdkDrag>
@@ -51,9 +27,20 @@
             </div>
           </div>
         </div>
+        <div  class="example-box text-center align-self-center align-items-center align-content-center">Sous total :
+          <div   class=" example-list" >
+            <div   class="example-box2"> {{semestre1HDC}}<br>{{semestre1HAD}} </div>
+            <div   class="example-box2"> {{semestre2HDC}}<br>{{semestre2HAD}} </div>
+            <div   class="example-box2"> {{semestre3HDC}}<br>{{semestre3HAD}} </div>
+            <div   class="example-box2"> {{semestre4HDC}}<br>{{semestre4HAD}} </div>
+          </div>
+        </div>
       </div>
 
 
-    </div>
-  </div>
+
+
+
+
+
 </div>

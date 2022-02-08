@@ -84,4 +84,5 @@ body{
   background: white;
   border-radius: 4px;
   overflow: hidden;
+  justify-content: center;
 }
