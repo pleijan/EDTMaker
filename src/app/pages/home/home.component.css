@@ -1,4 +1,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.example-spacer {
+  flex: 1 1 auto;
+}
 
 body{
   background-color: #003e00;
