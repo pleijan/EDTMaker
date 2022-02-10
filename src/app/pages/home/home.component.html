@@ -5,7 +5,7 @@
     <mat-icon>save</mat-icon>
   </button>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>import</mat-icon>
+    <mat-icon>upload</mat-icon>
   </button>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
   <mat-icon>print</mat-icon>
@@ -13,44 +13,52 @@
 </mat-toolbar>
 
 
-<div class="container-fluid">
+<mat-tab-group mat-align-tabs="center">
+<mat-tab label="planning">
+  <div class="container-fluid" style="margin-top: 30px">
+    <h1 style="text-align: center">Planning de cours</h1>
+    <div class="example-list2 " >
 
-      <h1 style="text-align: center">Planning de cours</h1>
+      <div class="example-box text-center align-self-center align-items-center align-content-center" style="margin: 20px">Semestre :
+        <div   class=" example-list" >
+          <div class="example-box2"> Semestre 1<br></div>
+          <div class="example-box2"> Semestre 2<br></div>
+          <div class="example-box2"> Semestre 3<br></div>
+          <div class="example-box2"> Semestre 4<br></div>
+        </div>
+      </div>
 
-      <div class="example-list2 " >
-        <div  class="example-box text-center align-self-center align-items-center align-content-center">Semestre :
-          <div   class=" example-list" >
-            <div   class="example-box2"> Semestre 1<br>
-            </div>
-            <div   class="example-box2"> Semestre 2<br >
-            </div>
-            <div  class="example-box2"> Semestre 3<br >
-            </div>
-            <div  class="example-box2"> Semestre 4<br >
-            </div>
-          </div>
-        </div>
-        <div class="example-box text-center align-self-center align-items-center align-content-center" *ngFor="let matiere of matieres">{{matiere.nom}}
-          <div cdkDropList class="example-list"  (cdkDropListDropped)="drop($event,matiere)">
-            <div class="example-box2"*ngFor="let cours of matiere.listeCours" cdkDrag>
-              {{cours.nom}}<br/><div *ngIf="cours.heureDeCours!=0"> {{cours.heureDeCours}}<br/>{{cours.heureAvecDevoir}}</div>
-            </div>
-          </div>
-        </div>
-        <div  class="example-box text-center align-self-center align-items-center align-content-center">Sous total :
-          <div   class=" example-list" >
-            <div   class="example-box2"> {{semestre1HDC}}<br>{{semestre1HAD}} </div>
-            <div   class="example-box2"> {{semestre2HDC}}<br>{{semestre2HAD}} </div>
-            <div   class="example-box2"> {{semestre3HDC}}<br>{{semestre3HAD}} </div>
-            <div   class="example-box2"> {{semestre4HDC}}<br>{{semestre4HAD}} </div>
+      <div class="example-box text-center align-self-center align-items-center align-content-center"  *ngFor="let matiere of specifique">{{matiere.nom}}
+        <div cdkDropList class="example-list"  (cdkDropListDropped)="drop($event,matiere)">
+          <div class="example-box2" style="background-color: {{matiere.couleur}}" *ngFor="let cours of matiere.listeCours" cdkDrag>
+            {{cours.nom}}<br/><div *ngIf="cours.heureDeCours!=0"> {{cours.heureDeCours}}<br/>{{cours.heureLabo}}<br/>{{cours.heureDevoirs}}</div>
           </div>
         </div>
       </div>
 
+      <div style="margin:10px"></div>
 
+      <div class="example-box text-center align-self-center align-items-center align-content-center"  *ngFor="let matiere of general">{{matiere.nom}}
+        <div cdkDropList class="example-list"  (cdkDropListDropped)="drop($event,matiere)">
+          <div class="example-box2" style="background-color: {{matiere.couleur}}" *ngFor="let cours of matiere.listeCours" cdkDrag>
+            {{cours.nom}}<br/><div *ngIf="cours.heureDeCours!=0"> {{cours.heureDeCours}}<br/>{{cours.heureLabo}}<br/>{{cours.heureDevoirs}}</div>
+          </div>
+        </div>
+      </div>
 
+      <div  class="example-box text-center align-self-center align-items-center align-content-center" style="margin: 20px">Sous total :
+        <div   class=" example-list" >
+          <div   class="example-box2"> {{semestre1HDC}}<br>{{semestre1HAD}} </div>
+          <div   class="example-box2"> {{semestre2HDC}}<br>{{semestre2HAD}} </div>
+          <div   class="example-box2"> {{semestre3HDC}}<br>{{semestre3HAD}} </div>
+          <div   class="example-box2"> {{semestre4HDC}}<br>{{semestre4HAD}} </div>
+        </div>
+      </div>
 
+    </div>
+  </div>
+</mat-tab>
+<mat-tab label="gestion du planning">
 
-
-
-</div>
+</mat-tab>
+</mat-tab-group>
