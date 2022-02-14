@@ -14,6 +14,10 @@ import {MatButtonModule} from "@angular/material/button";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {NgxColorsModule} from "ngx-colors";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import {MatTabsModule} from "@angular/material/tabs";
     MatButtonModule,
     DragDropModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    MatRadioModule,
+    MatSlideToggleModule,
+    NgxColorsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

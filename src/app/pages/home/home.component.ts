@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   semestre4HAD:number = 0;
 
   specifique: categories[] = [
-    {nom: 'Mathematique',couleur:"#FFFFFF", listeCours:[
+    {nom: 'Mathematique',couleur:"#ff8e8e", listeCours:[
       {nom:"MAT1",heureDeCours:3,heureLabo:5,heureDevoirs:2,optionnel:false},
       {nom:"MAT2",heureDeCours:5,heureLabo:8,heureDevoirs:2,optionnel:false},
       {nom:"MAT3",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:false},
@@ -96,6 +96,8 @@ export class HomeComponent implements OnInit {
         {nom:"EDU3",heureDeCours:2,heureLabo:3,heureDevoirs:2,optionnel:false},
         {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},]},
   ];
+
+  color: any;
   constructor() { }
 
   ngOnInit(): void {

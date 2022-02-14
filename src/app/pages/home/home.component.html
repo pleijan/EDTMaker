@@ -1,19 +1,19 @@
 <mat-toolbar color="primary" style="margin-bottom: 50px">
   <span>EDT-Maker</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>save</mat-icon>
   </button>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>upload</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <button mat-icon-button class="example-icon"  aria-label="Example icon-button with share icon">
   <mat-icon>print</mat-icon>
 </button>
 </mat-toolbar>
 
-
 <mat-tab-group mat-align-tabs="center">
+
 <mat-tab label="planning">
   <div class="container-fluid" style="margin-top: 30px">
     <h1 style="text-align: center">Planning de cours</h1>
@@ -58,7 +58,70 @@
     </div>
   </div>
 </mat-tab>
-<mat-tab label="gestion du planning">
 
+<mat-tab label="gestion du planning">
+  <div class="container-fluid" style="margin-top: 30px">
+    <div class="row" >
+      <div class="col-4 align-content-center align-items-center align-self-center text-center">
+
+        <h1 style="text-align: center">Formulaire d'ajout/de modification de cours</h1>
+
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label style="color: black">Nom du cours </mat-label>
+            <input matInput >
+          </mat-form-field>
+
+          <h2>nombre de cours</h2>
+          <mat-radio-group aria-label="nombre de cours">
+            <mat-radio-button checked style="margin: 5px" value="1">1 </mat-radio-button>
+            <mat-radio-button style="margin: 5px" value="2">2 </mat-radio-button>
+            <mat-radio-button style="margin: 5px" value="3">3 </mat-radio-button>
+            <mat-radio-button style="margin: 5px" value="4">4 </mat-radio-button>
+          </mat-radio-group>
+
+
+          <br/>
+          <h2>A quel type de cours appartient t'il : </h2>
+          Specifique <mat-slide-toggle> General</mat-slide-toggle>
+
+          <h2>La couleur de cette categorie : </h2>
+          <ngx-colors ngx-colors-trigger ></ngx-colors>
+
+
+
+
+        <br/>
+        <button mat-raised-button color="primary">Valider</button>
+
+      </div>
+
+      <div class="col-8">
+        <h1 style="text-align: center">gestion des differentes categories</h1>
+
+        <h2>Categories Specifiques</h2>
+        <div *ngFor="let matiere of specifique" style="margin: 5px">
+          <mat-card>
+            <mat-card-header>{{matiere.nom}}</mat-card-header>
+            <mat-card-actions align="end">
+              <button mat-button>Modifier</button>
+              <button mat-button>Supprimer</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+
+        <h2>Categories Generales</h2>
+        <div *ngFor="let matiere of general" style="margin: 5px">
+          <mat-card>
+            <mat-card-header>{{matiere.nom}}</mat-card-header>
+            <mat-card-actions align="end">
+              <button mat-button>Modifier</button>
+              <button mat-button>Supprimer</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
 </mat-tab>
 </mat-tab-group>
