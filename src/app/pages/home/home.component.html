@@ -73,12 +73,44 @@
           </mat-form-field>
 
           <h2>nombre de cours</h2>
-          <mat-radio-group aria-label="nombre de cours">
-            <mat-radio-button checked style="margin: 5px" value="1">1 </mat-radio-button>
-            <mat-radio-button style="margin: 5px" value="2">2 </mat-radio-button>
-            <mat-radio-button style="margin: 5px" value="3">3 </mat-radio-button>
-            <mat-radio-button style="margin: 5px" value="4">4 </mat-radio-button>
-          </mat-radio-group>
+          <mat-radio-group aria-label="nombreDeCours">
+            <mat-radio-button checked style="margin: 5px" value="1" (change)="setNbCours(1)">1 </mat-radio-button>
+            <mat-radio-button style="margin: 5px" value="2" (change)="setNbCours(2)">2 </mat-radio-button>
+            <mat-radio-button style="margin: 5px" value="3" (change)="setNbCours(3)">3 </mat-radio-button>
+            <mat-radio-button style="margin: 5px" value="4" (change)="setNbCours(4)">4 </mat-radio-button>
+          </mat-radio-group> <br/>
+
+
+          <div *ngFor="let in of counter(nombreDeCours);let i = index">
+            <div class="row">
+              <div class="col-6">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label style="color: black">matricule du cours {{i+1}}</mat-label>
+                  <input matInput >
+                </mat-form-field>
+              </div>
+              <div class="col-2">
+                <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label style="color: black">HDC</mat-label>
+                <input matInput >
+                </mat-form-field>
+              </div>
+              <div class="col-2">
+                <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label style="color: black">HDL</mat-label>
+                <input matInput >
+                </mat-form-field>
+              </div>
+              <div class="col-2">
+                <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label style="color: black">HDD</mat-label>
+                <input matInput >
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+
 
 
           <br/>
@@ -89,10 +121,6 @@
         </mat-button-toggle-group>
 
           <h2>La couleur de cette categorie : <ngx-colors ngx-colors-trigger ></ngx-colors></h2>
-
-
-
-
 
         <br/>
         <button mat-raised-button color="primary">Valider</button>
