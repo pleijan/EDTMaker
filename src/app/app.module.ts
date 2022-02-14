@@ -18,30 +18,32 @@ import {MatRadioModule} from "@angular/material/radio";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {NgxColorsModule} from "ngx-colors";
 import {MatCardModule} from "@angular/material/card";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    NgbModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatSelectModule,
-    MatButtonModule,
-    DragDropModule,
-    MatIconModule,
-    MatTabsModule,
-    MatRadioModule,
-    MatSlideToggleModule,
-    NgxColorsModule,
-    MatCardModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        NgbModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatSelectModule,
+        MatButtonModule,
+        DragDropModule,
+        MatIconModule,
+        MatTabsModule,
+        MatRadioModule,
+        MatSlideToggleModule,
+        NgxColorsModule,
+        MatCardModule,
+        MatButtonToggleModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

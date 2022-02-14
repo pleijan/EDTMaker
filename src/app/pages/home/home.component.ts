@@ -38,21 +38,11 @@ export class HomeComponent implements OnInit {
       {nom:"MAT2",heureDeCours:5,heureLabo:8,heureDevoirs:2,optionnel:false},
       {nom:"MAT3",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:false},
       {nom:"MAT4",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:false}]},
-    {nom: 'Mathematique2',couleur:"#FFFFFF", listeCours:[
-      {nom:"MATF",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:true},
-      {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},
-      {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},
-      {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false}]},
     {nom: 'Physique',couleur:"#FFFFFF", listeCours:[
       {nom:"PHY1",heureDeCours:5,heureLabo:8,heureDevoirs:2,optionnel:false},
       {nom:"PHY2",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:false},
       {nom:"PHY3",heureDeCours:5,heureLabo:8,heureDevoirs:2,optionnel:false},
       {nom:"PHYF",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:true}]},
-    {nom: 'Physique2',couleur:"#FFFFFF", listeCours:[
-        {nom:"PHYF",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:true},
-        {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},
-        {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},
-        {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false}]},
     {nom: 'Chimie',couleur:"#FFFFFF", listeCours:[
       {nom:"CHI1",heureDeCours:5,heureLabo:8,heureDevoirs:2,optionnel:false},
       {nom:"CHI2",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:false},
