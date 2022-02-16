@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
+import exportFromJSON from 'export-from-json'
 
 interface cours {
   nom: string;
@@ -12,8 +13,14 @@ interface cours {
 
 interface categories{
   nom: string;
-  couleur:String;
+  couleur:string;
   listeCours: cours[];
+}
+
+interface MetaData{
+  nom: string;
+  code :string;
+  nbSemestre: number;
 }
 
 @Component({
@@ -33,6 +40,8 @@ export class HomeComponent implements OnInit {
   semestre4HAD:number = 0;
 
   nombreDeCours:number=1;
+
+  metadata: MetaData = {nom: "EmploiDuTemps", code:"INFO", nbSemestre:4}
 
   specifique: categories[] = [
     {nom: 'Mathematique',couleur:"#ff8e8e", listeCours:[
@@ -163,6 +172,24 @@ export class HomeComponent implements OnInit {
 
   counter(i: number) {
     return new Array(i);
+  }
+
+  Save() {
+    const data = [this.metadata, this.general, this.specifique]
+    const fileName = this.metadata.nom+"_"+this.metadata.code
+    const exportType = 'json'
+
+    exportFromJSON({ data, fileName, exportType })
+  }
+
+  import(){
+    const data =require("./EmploiDuTemps.INFO.json") ;
+
+    this.metadata = data[0]
+    this.general = data[1]
+    this.specifique = data[2]
+
+    console.log(data);
   }
 
 }
