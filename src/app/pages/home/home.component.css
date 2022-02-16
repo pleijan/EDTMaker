@@ -3,6 +3,12 @@
   flex: 1 1 auto;
 }
 
+.hidden {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
+
 body{
   background-color: #003e00;
 }

@@ -182,8 +182,9 @@ export class HomeComponent implements OnInit {
     exportFromJSON({ data, fileName, exportType })
   }
 
-  import(){
-    const data =require("./EmploiDuTemps.INFO.json") ;
+  import($event: Event){
+    // @ts-ignore
+    const data = $event.target.files[0]
 
     this.metadata = data[0]
     this.general = data[1]
@@ -192,4 +193,8 @@ export class HomeComponent implements OnInit {
     console.log(data);
   }
 
+  handleClick() {
+    // @ts-ignore
+    document.getElementById('upload-file').click();
+  }
 }
