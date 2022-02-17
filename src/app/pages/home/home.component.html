@@ -9,12 +9,14 @@
     <mat-icon>upload</mat-icon>
     <i class="la la-upload"></i>
   </button>
+  <input class="hidden" type="file" id="upload-file" name="upload-file" accept=".json" (change)="import($event)">
+
   <button mat-icon-button class="example-icon"  aria-label="Example icon-button with share icon">
   <mat-icon>print</mat-icon>
 </button>
 </mat-toolbar>
 
-<input class="hidden" type="file" id="upload-file" name="upload-file" accept=".json" webkitdirectory multiple (change)="import($event)">
+
 
 <mat-tab-group mat-align-tabs="center">
 
@@ -70,10 +72,10 @@
 
         <h1 style="text-align: center">Formulaire d'ajout/de modification de cours</h1>
 
-
-          <mat-form-field class="example-full-width" appearance="fill">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+          <mat-form-field class="example-full-width" appearance="fill" >
             <mat-label style="color: black">Nom du cours </mat-label>
-            <input matInput >
+            <input matInput formControlName="nomControl">
           </mat-form-field>
 
           <h2>nombre de cours</h2>
@@ -90,25 +92,25 @@
               <div class="col-6">
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label style="color: black">matricule du cours {{i+1}}</mat-label>
-                  <input matInput >
+                  <input matInput value="" formControlName="mat{{i+1}}Control">
                 </mat-form-field>
               </div>
               <div class="col-2">
                 <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label style="color: black">HDC</mat-label>
-                <input matInput >
+                <input matInput type="number" value="0" formControlName="hdc{{i+1}}Control">
                 </mat-form-field>
               </div>
               <div class="col-2">
                 <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label style="color: black">HDL</mat-label>
-                <input matInput >
+                <input matInput type="number" value="0" formControlName="hdl{{i+1}}Control">
                 </mat-form-field>
               </div>
               <div class="col-2">
                 <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label style="color: black">HDD</mat-label>
-                <input matInput >
+                <input matInput type="number" value="0" formControlName="hdd{{i+1}}Control">
                 </mat-form-field>
               </div>
             </div>
@@ -119,16 +121,17 @@
 
           <br/>
           <h2>A quel type de cours appartient t'il : </h2>
-        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-          <mat-button-toggle value="general">general</mat-button-toggle>
-          <mat-button-toggle value="specifique">specifique</mat-button-toggle>
+
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="typeControl">
+          <mat-button-toggle value="1">general</mat-button-toggle>
+          <mat-button-toggle value="0">specifique</mat-button-toggle>
         </mat-button-toggle-group>
 
-          <h2>La couleur de cette categorie : <ngx-colors ngx-colors-trigger ></ngx-colors></h2>
+          <h2>La couleur de cette categorie : <ngx-colors ngx-colors-trigger  formControlName="couleurControl"></ngx-colors></h2>
 
         <br/>
-        <button mat-raised-button color="primary">Valider</button>
-
+        <button mat-raised-button color="primary" >Valider</button>
+        </form>
       </div>
 
       <div class="col-8">
@@ -140,7 +143,7 @@
             <mat-card-header>{{matiere.nom}}</mat-card-header>
             <mat-card-actions align="end">
               <button mat-button>Modifier</button>
-              <button mat-button>Supprimer</button>
+              <button mat-button (click)="deleteS(matiere.nom)">Supprimer</button>
             </mat-card-actions>
           </mat-card>
         </div>
@@ -151,7 +154,7 @@
             <mat-card-header>{{matiere.nom}}</mat-card-header>
             <mat-card-actions align="end">
               <button mat-button>Modifier</button>
-              <button mat-button>Supprimer</button>
+              <button mat-button (click)="deleteG(matiere.nom)">Supprimer</button>
             </mat-card-actions>
           </mat-card>
         </div>

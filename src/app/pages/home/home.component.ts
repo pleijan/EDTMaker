@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import {FormGroup, FormBuilder, FormControl, Validator, Validators, AbstractControl} from '@angular/forms';
 import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 import exportFromJSON from 'export-from-json'
 
-interface cours {
+export interface cours {
   nom: string;
   heureDeCours: number;
   heureLabo: number;
   heureDevoirs: number;
   optionnel:boolean;
 }
-
-interface categories{
+export interface categories{
   nom: string;
   couleur:string;
   listeCours: cours[];
 }
-
-interface MetaData{
+export interface MetaData{
   nom: string;
   code :string;
   nbSemestre: number;
@@ -30,6 +28,17 @@ interface MetaData{
 })
 export class HomeComponent implements OnInit {
 
+  form: FormGroup = new FormGroup({
+    nomControl : new FormControl(''),
+    Mat1Control  : new FormControl(''),
+    hdc1Control  : new FormControl(''),
+    hdl1Control  : new FormControl(''),
+    hdd1Control  : new FormControl(''),
+    typeControl  : new FormControl(''),
+    couleurControl  : new FormControl(''),
+  })
+
+
   semestre1HDC:number = 0;
   semestre2HDC:number = 0;
   semestre3HDC:number = 0;
@@ -38,8 +47,7 @@ export class HomeComponent implements OnInit {
   semestre2HAD:number = 0;
   semestre3HAD:number = 0;
   semestre4HAD:number = 0;
-
-  nombreDeCours:number=1;
+  nombreDeCours:number = 1;
 
   metadata: MetaData = {nom: "EmploiDuTemps", code:"INFO", nbSemestre:4}
 
@@ -48,10 +56,39 @@ export class HomeComponent implements OnInit {
   general:categories[]=[];
 
   color: any;
-  constructor() { }
+  private nouveau: {} | undefined;
+  private cours:{}| undefined;
+  constructor(private Formbuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.calculSemestre()
+
+    this.form = this.Formbuilder.group(
+      {
+        nomControl: ['', Validators.required],
+        mat1Control: ['', Validators.required],
+        hdd1Control: ['', Validators.required],
+        hdc1Control: ['', Validators.required],
+        hdl1Control: ['', Validators.required],
+        mat2Control: [''],
+        hdd2Control: [''],
+        hdc2Control: [''],
+        hdl2Control: [''],
+        mat3Control: [''],
+        hdd3Control: [''],
+        hdc3Control: [''],
+        hdl3Control: [''],
+        mat4Control: [''],
+        hdd4Control: [''],
+        hdc4Control: [''],
+        hdl4Control: [''],
+        typeControl: ['', Validators.required],
+        couleurControl: ['', Validators.required]
+      }
+    )
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
   }
 
   drop(event: CdkDragDrop<string[]>,matiere: categories) {
@@ -149,5 +186,96 @@ export class HomeComponent implements OnInit {
   handleClick() {
     // @ts-ignore
     document.getElementById('upload-file').click();
+  }
+
+  deleteS(matiere:string) {
+    this.specifique.forEach((elements,index)=>{
+      if(elements.nom==matiere) this.specifique.splice(index,1)
+    })
+    this.calculSemestre()
+  }
+
+  deleteG(matiere: string) {
+    this.general.forEach((elements,index)=>{
+      if(elements.nom==matiere) this.general.splice(index,1)
+    })
+    this.calculSemestre()
+  }
+
+  onSubmit() {
+    if (this.form.valid) {
+
+      console.log(this.form)
+
+      if (this.form.value.typeControl == 0) {
+        this.specifique.push(<categories>{
+          nom: this.form.value.nomControl,
+          couleur: this.form.value.couleurControl,
+          listeCours: [{
+            nom: this.form.value.mat1Control,
+            heureDeCours: this.form.value.hdc1Control,
+            heureLabo: this.form.value.hdl1Control,
+            heureDevoirs: this.form.value.hdd1Control,
+            optionnel: false
+          },
+            {
+              nom: this.form.value.mat2Control,
+              heureDeCours: this.form.value.hdc2Control,
+              heureLabo: this.form.value.hdl2Control,
+              heureDevoirs: this.form.value.hdd2Control,
+              optionnel: false
+            },
+            {
+              nom: this.form.value.mat3Control,
+              heureDeCours: this.form.value.hdc3Control,
+              heureLabo: this.form.value.hdl3Control,
+              heureDevoirs: this.form.value.hdd3Control,
+              optionnel: false
+            },
+            {
+              nom: this.form.value.mat4Control,
+              heureDeCours: this.form.value.hdc4Control,
+              heureLabo: this.form.value.hdl4Control,
+              heureDevoirs: this.form.value.hdd4Control,
+              optionnel: false
+            },]
+        })
+      } else {
+        this.general.push(<categories>{
+          nom: this.form.value.nomControl,
+          couleur: this.form.value.couleurControl,
+          listeCours: [{
+            nom: this.form.value.mat1Control,
+            heureDeCours: this.form.value.hdc1Control,
+            heureLabo: this.form.value.hdl1Control,
+            heureDevoirs: this.form.value.hdd1Control,
+            optionnel: false
+          },
+            {
+              nom: this.form.value.mat2Control,
+              heureDeCours: this.form.value.hdc2Control,
+              heureLabo: this.form.value.hdl2Control,
+              heureDevoirs: this.form.value.hdd2Control,
+              optionnel: false
+            },
+            {
+              nom: this.form.value.mat3Control,
+              heureDeCours: this.form.value.hdc3Control,
+              heureLabo: this.form.value.hdl3Control,
+              heureDevoirs: this.form.value.hdd3Control,
+              optionnel: false
+            },
+            {
+              nom: this.form.value.mat4Control,
+              heureDeCours: this.form.value.hdc4Control,
+              heureLabo: this.form.value.hdl4Control,
+              heureDevoirs: this.form.value.hdd4Control,
+              optionnel: false
+            },]
+        })
+      }
+
+    this.calculSemestre()
+    }
   }
 }
