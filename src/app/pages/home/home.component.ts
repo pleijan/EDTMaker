@@ -43,60 +43,9 @@ export class HomeComponent implements OnInit {
 
   metadata: MetaData = {nom: "EmploiDuTemps", code:"INFO", nbSemestre:4}
 
-  specifique: categories[] = [
-    {nom: 'Mathematique',couleur:"#ff8e8e", listeCours:[
-      {nom:"MAT1",heureDeCours:3,heureLabo:5,heureDevoirs:2,optionnel:false},
-      {nom:"MAT2",heureDeCours:5,heureLabo:8,heureDevoirs:2,optionnel:false},
-      {nom:"MAT3",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:false},
-      {nom:"MAT4",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:false}]},
-    {nom: 'Physique',couleur:"#FFFFFF", listeCours:[
-      {nom:"PHY1",heureDeCours:5,heureLabo:8,heureDevoirs:2,optionnel:false},
-      {nom:"PHY2",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:false},
-      {nom:"PHY3",heureDeCours:5,heureLabo:8,heureDevoirs:2,optionnel:false},
-      {nom:"PHYF",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:true}]},
-    {nom: 'Chimie',couleur:"#FFFFFF", listeCours:[
-      {nom:"CHI1",heureDeCours:5,heureLabo:8,heureDevoirs:2,optionnel:false},
-      {nom:"CHI2",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:false},
-      {nom:"CHIF",heureDeCours:5,heureLabo:8,heureDevoirs:2,optionnel:true},
-      {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},]},
-    {nom: 'Biologie',couleur:"#FFFFFF", listeCours:[
-      {nom:"BIO1",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:false},
-      {nom:"BIO2",heureDeCours:3,heureLabo:5,heureDevoirs:2,optionnel:false},
-      {nom:"BIOF",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:true},
-      {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},]},
-    {nom: 'Informatique',couleur:"#FFFFFF", listeCours:[
-      {nom:"INF1",heureDeCours:3,heureLabo:6,heureDevoirs:2,optionnel:false},
-      {nom:"INTC",heureDeCours:3,heureLabo:6,heureDevoirs:2,optionnel:false},
-      {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},
-      {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},]},
-  ];
-  general:categories[]=[
-    {nom: 'Francais',couleur:"#FFFFFF", listeCours:[
-        {nom:"FRA1",heureDeCours:4,heureLabo:7,heureDevoirs:2,optionnel:false},
-        {nom:"FRA2",heureDeCours:4,heureLabo:7,heureDevoirs:2,optionnel:false},
-        {nom:"FRA3",heureDeCours:4,heureLabo:8,heureDevoirs:2,optionnel:false},
-        {nom:"FRA4",heureDeCours:4,heureLabo:6,heureDevoirs:2,optionnel:false}]},
-    {nom: 'Anglais',couleur:"#FFFFFF", listeCours:[
-        {nom:"ANG1",heureDeCours:3,heureLabo:6,heureDevoirs:2,optionnel:false},
-        {nom:"ANG2",heureDeCours:3,heureLabo:6,heureDevoirs:2,optionnel:false},
-        {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},
-        {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},]},
-    {nom: 'Philosophie',couleur:"#FFFFFF", listeCours:[
-        {nom:"PHI1",heureDeCours:4,heureLabo:7,heureDevoirs:2,optionnel:false},
-        {nom:"PHI2",heureDeCours:3,heureLabo:6,heureDevoirs:2,optionnel:false},
-        {nom:"PHI3",heureDeCours:3,heureLabo:6,heureDevoirs:2,optionnel:false},
-        {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},]},
-    {nom: 'Complementaire',couleur:"#FFFFFF", listeCours:[
-        {nom:"FC",heureDeCours:3,heureLabo:6,heureDevoirs:2,optionnel:false},
-        {nom:"FC",heureDeCours:3,heureLabo:6,heureDevoirs:2,optionnel:false},
-        {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},
-        {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},]},
-    {nom: 'Education physique',couleur:"#FFFFFF", listeCours:[
-        {nom:"EDU1",heureDeCours:2,heureLabo:3,heureDevoirs:2,optionnel:false},
-        {nom:"EDU2",heureDeCours:2,heureLabo:3,heureDevoirs:2,optionnel:false},
-        {nom:"EDU3",heureDeCours:2,heureLabo:3,heureDevoirs:2,optionnel:false},
-        {nom:" ",heureDeCours:0,heureLabo:0,heureDevoirs:2,optionnel:false},]},
-  ];
+  specifique: categories[] = []
+
+  general:categories[]=[];
 
   color: any;
   constructor() { }
@@ -166,6 +115,7 @@ export class HomeComponent implements OnInit {
       }
     }
   }
+
   setNbCours(n:number){
     this.nombreDeCours=n;
   }
@@ -183,14 +133,17 @@ export class HomeComponent implements OnInit {
   }
 
   import($event: Event){
-    // @ts-ignore
-    const data = $event.target.files[0]
+
+    const data = require("./EmploiDuTemps.INFO.json")
 
     this.metadata = data[0]
     this.general = data[1]
     this.specifique = data[2]
 
-    console.log(data);
+    // @ts-ignore
+    console.log($event.target.files[0]);
+
+    this.calculSemestre()
   }
 
   handleClick() {
