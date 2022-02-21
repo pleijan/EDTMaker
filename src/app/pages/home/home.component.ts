@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, FormControl, Validator, Validators, AbstractControl} from '@angular/forms';
 import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 import exportFromJSON from 'export-from-json'
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface cours {
   nom: string;
@@ -20,6 +21,7 @@ export interface MetaData{
   code :string;
   nbSemestre: number;
 }
+
 
 @Component({
   selector: 'app-home',
@@ -43,11 +45,19 @@ export class HomeComponent implements OnInit {
   semestre2HDC:number = 0;
   semestre3HDC:number = 0;
   semestre4HDC:number = 0;
-  semestre1HAD:number = 0;
-  semestre2HAD:number = 0;
-  semestre3HAD:number = 0;
-  semestre4HAD:number = 0;
+  semestre1HDD:number = 0;
+  semestre2HDD:number = 0;
+  semestre3HDD:number = 0;
+  semestre4HDD:number = 0;
+  semestre1HDL:number = 0;
+  semestre2HDL:number = 0;
+  semestre3HDL:number = 0;
+  semestre4HDL:number = 0;
   nombreDeCours:number = 1;
+  totalS1:number = 0;
+  totalS2:number = 0;
+  totalS3:number = 0;
+  totalS4:number = 0;
 
   metadata: MetaData = {nom: "EmploiDuTemps", code:"INFO", nbSemestre:4}
 
@@ -56,9 +66,7 @@ export class HomeComponent implements OnInit {
   general:categories[]=[];
 
   color: any;
-  private nouveau: {} | undefined;
-  private cours:{}| undefined;
-  constructor(private Formbuilder: FormBuilder) { }
+  constructor(private Formbuilder: FormBuilder,private _snackBar: MatSnackBar ) { }
 
   ngOnInit(): void {
     this.calculSemestre()
@@ -103,54 +111,77 @@ export class HomeComponent implements OnInit {
     this.semestre3HDC = 0;
     this.semestre4HDC = 0;
 
-    this.semestre1HAD = 0;
-    this.semestre2HAD = 0;
-    this.semestre3HAD = 0;
-    this.semestre4HAD = 0;
+    this.semestre1HDD = 0;
+    this.semestre2HDD = 0;
+    this.semestre3HDD = 0;
+    this.semestre4HDD = 0;
+
+    this.semestre1HDL = 0;
+    this.semestre2HDL = 0;
+    this.semestre3HDL = 0;
+    this.semestre4HDL = 0;
+
+    this.totalS1 = 0;
+    this.totalS2 = 0;
+    this.totalS3 = 0;
+    this.totalS4 = 0;
 
     for (let i = 0; i < this.general.length; i++) {
       for (let y = 0; y < this.general[i].listeCours.length; y++) {
 
         if(y==0){
           this.semestre1HDC = this.semestre1HDC  + this.general[i].listeCours[y].heureDeCours;
-          this.semestre1HAD = this.semestre1HAD  + this.general[i].listeCours[y].heureLabo;
+          this.semestre1HDL = this.semestre1HDL  + this.general[i].listeCours[y].heureLabo;
+          this.semestre1HDD = this.semestre1HDD  + this.general[i].listeCours[y].heureDevoirs;
         }
         if(y==1){
           this.semestre2HDC = this.semestre2HDC  + this.general[i].listeCours[y].heureDeCours;
-          this.semestre2HAD = this.semestre2HAD  + this.general[i].listeCours[y].heureLabo;
+          this.semestre2HDL = this.semestre2HDL  + this.general[i].listeCours[y].heureLabo;
+          this.semestre2HDD = this.semestre2HDD  + this.general[i].listeCours[y].heureDevoirs;
         }
         if(y==2){
           this.semestre3HDC = this.semestre3HDC  + this.general[i].listeCours[y].heureDeCours;
-          this.semestre3HAD = this.semestre3HAD  + this.general[i].listeCours[y].heureLabo;
+          this.semestre3HDL = this.semestre3HDL  + this.general[i].listeCours[y].heureLabo;
+          this.semestre3HDD = this.semestre3HDD  + this.general[i].listeCours[y].heureDevoirs;
         }
         if(y==3){
           this.semestre4HDC = this.semestre4HDC  + this.general[i].listeCours[y].heureDeCours;
-          this.semestre4HAD = this.semestre4HAD  + this.general[i].listeCours[y].heureLabo;
+          this.semestre4HDL = this.semestre4HDL  + this.general[i].listeCours[y].heureLabo;
+          this.semestre4HDD = this.semestre4HDD  + this.general[i].listeCours[y].heureDevoirs;
         }
       }
-    }
 
-    for (let i = 0; i < this.specifique.length; i++) {
       for (let y = 0; y < this.specifique[i].listeCours.length; y++) {
 
         if(y==0){
           this.semestre1HDC = this.semestre1HDC  + this.specifique[i].listeCours[y].heureDeCours;
-          this.semestre1HAD = this.semestre1HAD  + this.specifique[i].listeCours[y].heureLabo;
+          this.semestre1HDL = this.semestre1HDL  + this.specifique[i].listeCours[y].heureLabo;
+          this.semestre1HDD = this.semestre1HDD  + this.specifique[i].listeCours[y].heureDevoirs;
         }
         if(y==1){
           this.semestre2HDC = this.semestre2HDC  + this.specifique[i].listeCours[y].heureDeCours;
-          this.semestre2HAD = this.semestre2HAD  + this.specifique[i].listeCours[y].heureLabo;
+          this.semestre2HDL = this.semestre2HDL  + this.specifique[i].listeCours[y].heureLabo;
+          this.semestre2HDD = this.semestre2HDD  + this.specifique[i].listeCours[y].heureDevoirs;
         }
         if(y==2){
           this.semestre3HDC = this.semestre3HDC  + this.specifique[i].listeCours[y].heureDeCours;
-          this.semestre3HAD = this.semestre3HAD  + this.specifique[i].listeCours[y].heureLabo;
+          this.semestre3HDL = this.semestre3HDL  + this.specifique[i].listeCours[y].heureLabo;
+          this.semestre3HDD = this.semestre3HDD  + this.specifique[i].listeCours[y].heureDevoirs;
         }
         if(y==3){
           this.semestre4HDC = this.semestre4HDC  + this.specifique[i].listeCours[y].heureDeCours;
-          this.semestre4HAD = this.semestre4HAD  + this.specifique[i].listeCours[y].heureLabo;
+          this.semestre4HDL = this.semestre4HDL  + this.specifique[i].listeCours[y].heureLabo;
+          this.semestre4HDD = this.semestre4HDD  + this.specifique[i].listeCours[y].heureDevoirs;
         }
       }
     }
+
+    this.totalS1=this.semestre1HDD+this.semestre1HDC+this.semestre1HDL
+    this.totalS2=this.semestre2HDD+this.semestre2HDC+this.semestre2HDL
+    this.totalS3=this.semestre3HDD+this.semestre3HDC+this.semestre3HDL
+    this.totalS4=this.semestre4HDD+this.semestre4HDC+this.semestre4HDL
+
+
   }
 
   setNbCours(n:number){
@@ -204,8 +235,6 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-
-      console.log(this.form)
 
       if (this.form.value.typeControl == 0) {
         this.specifique.push(<categories>{
@@ -275,7 +304,22 @@ export class HomeComponent implements OnInit {
         })
       }
 
-    this.calculSemestre()
+
+      this._snackBar.open("le cours de "+this.form.value.nomControl+" a bien été importé", 'ok', {
+        duration: 3000
+      });
+      this.form.reset();
     }
+    else this._snackBar.open("Il manque des informations pour créer le cours", 'ok', {
+      duration: 3000
+    });
+    this.calculSemestre();
   }
+
+  modifS(matiere: categories) {
+
+
+
+  }
+
 }

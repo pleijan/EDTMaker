@@ -54,10 +54,19 @@
 
       <div  class="example-box text-center align-self-center align-items-center align-content-center" style="margin: 20px">Sous total :
         <div   class=" example-list" >
-          <div   class="example-box2"> {{semestre1HDC}}<br>{{semestre1HAD}} </div>
-          <div   class="example-box2"> {{semestre2HDC}}<br>{{semestre2HAD}} </div>
-          <div   class="example-box2"> {{semestre3HDC}}<br>{{semestre3HAD}} </div>
-          <div   class="example-box2"> {{semestre4HDC}}<br>{{semestre4HAD}} </div>
+          <div   class="example-box2"> {{semestre1HDC}}<br>{{semestre1HDL}}<br>{{semestre1HDD}} </div>
+          <div   class="example-box2"> {{semestre2HDC}}<br>{{semestre2HDL}}<br>{{semestre2HDD}} </div>
+          <div   class="example-box2"> {{semestre3HDC}}<br>{{semestre3HDL}}<br>{{semestre3HDD}} </div>
+          <div   class="example-box2"> {{semestre4HDC}}<br>{{semestre4HDL}}<br>{{semestre4HDD}} </div>
+        </div>
+      </div>
+
+      <div  class="example-box text-center align-self-center align-items-center align-content-center" >Total :
+        <div   class=" example-list" >
+          <div   class="example-box2"> {{totalS1}} </div>
+          <div   class="example-box2"> {{totalS2}} </div>
+          <div   class="example-box2"> {{totalS3}} </div>
+          <div   class="example-box2"> {{totalS4}} </div>
         </div>
       </div>
 
@@ -75,7 +84,7 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()" >
           <mat-form-field class="example-full-width" appearance="fill" >
             <mat-label style="color: black">Nom du cours </mat-label>
-            <input matInput formControlName="nomControl">
+            <input matInput id="nom" formControlName="nomControl">
           </mat-form-field>
 
           <h2>nombre de cours</h2>
@@ -142,7 +151,7 @@
           <mat-card>
             <mat-card-header>{{matiere.nom}}</mat-card-header>
             <mat-card-actions align="end">
-              <button mat-button>Modifier</button>
+              <button mat-button (click)="modifS(matiere)">Modifier</button>
               <button mat-button (click)="deleteS(matiere.nom)">Supprimer</button>
             </mat-card-actions>
           </mat-card>
@@ -153,7 +162,7 @@
           <mat-card>
             <mat-card-header>{{matiere.nom}}</mat-card-header>
             <mat-card-actions align="end">
-              <button mat-button>Modifier</button>
+              <button mat-button >Modifier</button>
               <button mat-button (click)="deleteG(matiere.nom)">Supprimer</button>
             </mat-card-actions>
           </mat-card>

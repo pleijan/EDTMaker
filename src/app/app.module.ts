@@ -19,6 +19,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {NgxColorsModule} from "ngx-colors";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
         MatCardModule,
         FormsModule,
         ReactiveFormsModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+      MatSnackBarModule
     ],
   providers: [],
   bootstrap: [AppComponent]
