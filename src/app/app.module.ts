@@ -20,11 +20,13 @@ import {NgxColorsModule} from "ngx-colors";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AccueilComponent } from './pages/accueil/accueil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AccueilComponent
   ],
     imports: [
         BrowserModule,
