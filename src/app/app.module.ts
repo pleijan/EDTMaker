@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './pages/home/home.component';
+import { S4Component } from './pages/s4/s4.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -20,13 +20,16 @@ import {NgxColorsModule} from "ngx-colors";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { AccueilComponent } from './pages/accueil/accueil.component';
+import { HomeComponent } from './pages/home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    AccueilComponent
+    S4Component,
+    HomeComponent
   ],
     imports: [
         BrowserModule,
@@ -48,7 +51,9 @@ import { AccueilComponent } from './pages/accueil/accueil.component';
         FormsModule,
         ReactiveFormsModule,
         MatButtonToggleModule,
-      MatSnackBarModule
+      MatSnackBarModule,
+      RouterModule,
+      AppRoutingModule
     ],
   providers: [],
   bootstrap: [AppComponent]
