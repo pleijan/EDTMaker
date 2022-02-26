@@ -23,13 +23,15 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HomeComponent } from './pages/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
+import { S6Component } from './pages/s6/s6.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     S4Component,
-    HomeComponent
+    HomeComponent,
+    S6Component
   ],
     imports: [
         BrowserModule,

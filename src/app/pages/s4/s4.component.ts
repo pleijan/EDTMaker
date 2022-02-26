@@ -25,7 +25,7 @@ export interface MetaData{
 
 @Component({
   selector: 'app-home',
-  templateUrl: './s4.html',
+  templateUrl: './s4.component.html',
   styleUrls: ['./s4.component.css']
 })
 export class S4Component implements OnInit {
@@ -71,8 +71,12 @@ export class S4Component implements OnInit {
 
   ngOnInit(): void {
 
-    if (sessionStorage.getItem('name') == null || sessionStorage.getItem('code') == null || sessionStorage.getItem('semestre') == null) {
+    if (sessionStorage.getItem('name') == null || sessionStorage.getItem('code') == null) {
       this.router.navigate(['home'])
+      this.metadata = {
+        nom: "",
+        code: ""
+      }
     }
     // @ts-ignore
     this.metadata = {
@@ -333,4 +337,8 @@ export class S4Component implements OnInit {
 
   }
 
+  accueil() {
+    sessionStorage.clear()
+    this.router.navigate(['/home'])
+  }
 }

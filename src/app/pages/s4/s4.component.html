@@ -1,10 +1,12 @@
 <mat-toolbar color="primary" style="margin-bottom: 50px">
-  <span>EDT-Maker</span>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon" (click)="accueil()">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span>EDT-Maker {{metadata?.nom}}.{{metadata?.code}}.json</span>
   <span class="example-spacer"></span>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon" (click)="Save()">
     <mat-icon>save</mat-icon>
   </button>
-
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="handleClick()" href="javascript:undefined">
     <mat-icon>upload</mat-icon>
     <i class="la la-upload"></i>

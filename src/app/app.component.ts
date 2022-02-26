@@ -13,6 +13,5 @@ export class AppComponent {
 
   onSubmit() {
 
-    this.router.navigate(['/home'])
   }
 }

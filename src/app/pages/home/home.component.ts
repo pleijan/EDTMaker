@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
     sessionStorage.setItem("name",this.form.value.nomControl)
     sessionStorage.setItem("code",this.form.value.codeControl)
 
-    this.router.navigate(['/s4'])
+    if (this.form.value.tailleControl == 1) this.router.navigate(['/s4'])
+    else this.router.navigate(['/s6'])
   }
 }
