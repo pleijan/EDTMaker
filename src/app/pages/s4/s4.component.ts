@@ -66,7 +66,10 @@ export class S4Component implements OnInit {
   general:categories[]=[];
 
   color: any;
-  metadata: MetaData | undefined;
+  metadata: MetaData  = {
+    nom: "",
+    code: ""
+  };
   constructor(private Formbuilder: FormBuilder,private _snackBar: MatSnackBar,private router: Router ) { }
 
   ngOnInit(): void {
@@ -200,11 +203,14 @@ export class S4Component implements OnInit {
 
   setNbCours(n:number){
     this.nombreDeCours=n;
+    console.log(this.nombreDeCours)
+    this.form.reset();
   }
 
   counter(i: number) {
     return new Array(i);
   }
+
 
   Save() {
     const data = [this.metadata, this.general, this.specifique]
@@ -333,8 +339,63 @@ export class S4Component implements OnInit {
 
   modifS(matiere: categories) {
 
+      this.setNbCours(4)
 
+      this.form = this.Formbuilder.group(
+        {
+          nomControl: [matiere.nom, Validators.required],
+          mat1Control: [matiere.listeCours[0].nom, Validators.required],
+          hdd1Control: [matiere.listeCours[0].heureDevoirs, Validators.required],
+          hdc1Control: [matiere.listeCours[0].heureDeCours, Validators.required],
+          hdl1Control: [matiere.listeCours[0].heureLabo, Validators.required],
+          mat2Control: [matiere.listeCours[1].nom],
+          hdd2Control: [matiere.listeCours[1].heureDevoirs],
+          hdc2Control: [matiere.listeCours[1].heureDeCours],
+          hdl2Control: [matiere.listeCours[1].heureLabo],
+          mat3Control: [matiere.listeCours[2].nom],
+          hdd3Control: [matiere.listeCours[2].heureDevoirs],
+          hdc3Control: [matiere.listeCours[2].heureDeCours],
+          hdl3Control: [matiere.listeCours[2].heureLabo],
+          mat4Control: [matiere.listeCours[3].nom],
+          hdd4Control: [matiere.listeCours[3].heureDevoirs],
+          hdc4Control: [matiere.listeCours[3].heureDeCours],
+          hdl4Control: [matiere.listeCours[3].heureLabo],
+          typeControl: [0, Validators.required],
+          //couleurControl: ['', Validators.required]
+        }
+      )
 
+    this.deleteS(matiere.nom)
+  }
+
+  modifG(matiere: categories) {
+
+    this.setNbCours(4)
+
+    this.form = this.Formbuilder.group(
+      {
+        nomControl: [matiere.nom, Validators.required],
+        mat1Control: [matiere.listeCours[0].nom, Validators.required],
+        hdd1Control: [matiere.listeCours[0].heureDevoirs, Validators.required],
+        hdc1Control: [matiere.listeCours[0].heureDeCours, Validators.required],
+        hdl1Control: [matiere.listeCours[0].heureLabo, Validators.required],
+        mat2Control: [matiere.listeCours[1].nom],
+        hdd2Control: [matiere.listeCours[1].heureDevoirs],
+        hdc2Control: [matiere.listeCours[1].heureDeCours],
+        hdl2Control: [matiere.listeCours[1].heureLabo],
+        mat3Control: [matiere.listeCours[2].nom],
+        hdd3Control: [matiere.listeCours[2].heureDevoirs],
+        hdc3Control: [matiere.listeCours[2].heureDeCours],
+        hdl3Control: [matiere.listeCours[2].heureLabo],
+        mat4Control: [matiere.listeCours[3].nom],
+        hdd4Control: [matiere.listeCours[3].heureDevoirs],
+        hdc4Control: [matiere.listeCours[3].heureDeCours],
+        hdl4Control: [matiere.listeCours[3].heureLabo],
+        typeControl: [1, Validators.required],
+        //couleurControl: ['', Validators.required]
+      }
+    )
+    this.deleteG(matiere.nom)
   }
 
   accueil() {

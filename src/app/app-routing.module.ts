@@ -9,11 +9,7 @@ const routes: Routes = [
   { path: 's4', component: S4Component },
   { path: 's6', component: S6Component },
   { path: 'home', component: HomeComponent },
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full',
-  },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', pathMatch: 'full',redirectTo: '/home' }
 ];
 

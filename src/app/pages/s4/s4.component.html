@@ -164,7 +164,7 @@
           <mat-card>
             <mat-card-header>{{matiere.nom}}</mat-card-header>
             <mat-card-actions align="end">
-              <button mat-button >Modifier</button>
+              <button mat-button (click)="modifG(matiere)">Modifier</button>
               <button mat-button (click)="deleteG(matiere.nom)">Supprimer</button>
             </mat-card-actions>
           </mat-card>
