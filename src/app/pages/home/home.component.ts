@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
       {
         nomControl: ['', Validators.required],
         codeControl:['', Validators.required],
-        tailleControl:['', Validators.required],
+        tailleControl:[1, Validators.required],
       })
   }
 
