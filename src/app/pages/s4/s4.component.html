@@ -65,10 +65,10 @@
 
       <div  class="example-box text-center align-self-center align-items-center align-content-center" >Total :
         <div   class=" example-list" >
-          <div   class="example-box2"> {{totalS1}} </div>
-          <div   class="example-box2"> {{totalS2}} </div>
-          <div   class="example-box2"> {{totalS3}} </div>
-          <div   class="example-box2"> {{totalS4}} </div>
+          <div   class="example-box2"> {{this.totalS1}} </div>
+          <div   class="example-box2"> {{this.totalS2}} </div>
+          <div   class="example-box2"> {{this.totalS3}} </div>
+          <div   class="example-box2"> {{this.totalS4}} </div>
         </div>
       </div>
 
@@ -89,21 +89,17 @@
             <input matInput id="nom" formControlName="nomControl">
           </mat-form-field>
 
-          <h2>nombre de cours</h2>
-          <mat-radio-group aria-label="nombreDeCours">
-            <mat-radio-button checked style="margin: 5px" value="1" (change)="setNbCours(1)">1 </mat-radio-button>
-            <mat-radio-button style="margin: 5px" value="2" (change)="setNbCours(2)">2 </mat-radio-button>
-            <mat-radio-button style="margin: 5px" value="3" (change)="setNbCours(3)">3 </mat-radio-button>
-            <mat-radio-button style="margin: 5px" value="4" (change)="setNbCours(4)">4 </mat-radio-button>
-          </mat-radio-group> <br/>
+          <h2>liste de cours</h2><br/><p>(ne remplisser que les champs que vous avez besoin)</p>
 
 
-          <div *ngFor="let in of counter(nombreDeCours);let i = index">
+          <div *ngFor="let in of counter(4);let i = index">
             <div class="row">
               <div class="col-6">
                 <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label style="color: black">matricule du cours {{i+1}}</mat-label>
+                  <mat-label style="color: black">matricule du cours {{i+1}} </mat-label>
                   <input matInput value="" formControlName="mat{{i+1}}Control">
+                  <mat-hint align="start" *ngIf="i+1==1"><strong>Requis</strong> </mat-hint>
+
                 </mat-form-field>
               </div>
               <div class="col-2">

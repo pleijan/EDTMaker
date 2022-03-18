@@ -53,7 +53,6 @@ export class S4Component implements OnInit {
   semestre2HDL:number = 0;
   semestre3HDL:number = 0;
   semestre4HDL:number = 0;
-  nombreDeCours:number = 1;
   totalS1:number = 0;
   totalS2:number = 0;
   totalS3:number = 0;
@@ -146,28 +145,29 @@ export class S4Component implements OnInit {
     for (let i = 0; i < this.general.length; i++) {
       for (let y = 0; y < this.general[i].listeCours.length; y++) {
 
-        if(y==0){
-          this.semestre1HDC = this.semestre1HDC  + this.general[i].listeCours[y].heureDeCours;
-          this.semestre1HDL = this.semestre1HDL  + this.general[i].listeCours[y].heureLabo;
-          this.semestre1HDD = this.semestre1HDD  + this.general[i].listeCours[y].heureDevoirs;
+        if (y == 0) {
+          this.semestre1HDC = this.semestre1HDC + this.general[i].listeCours[y].heureDeCours;
+          this.semestre1HDL = this.semestre1HDL + this.general[i].listeCours[y].heureLabo;
+          this.semestre1HDD = this.semestre1HDD + this.general[i].listeCours[y].heureDevoirs;
         }
-        if(y==1){
-          this.semestre2HDC = this.semestre2HDC  + this.general[i].listeCours[y].heureDeCours;
-          this.semestre2HDL = this.semestre2HDL  + this.general[i].listeCours[y].heureLabo;
-          this.semestre2HDD = this.semestre2HDD  + this.general[i].listeCours[y].heureDevoirs;
+        if (y == 1) {
+          this.semestre2HDC = this.semestre2HDC + this.general[i].listeCours[y].heureDeCours;
+          this.semestre2HDL = this.semestre2HDL + this.general[i].listeCours[y].heureLabo;
+          this.semestre2HDD = this.semestre2HDD + this.general[i].listeCours[y].heureDevoirs;
         }
-        if(y==2){
-          this.semestre3HDC = this.semestre3HDC  + this.general[i].listeCours[y].heureDeCours;
-          this.semestre3HDL = this.semestre3HDL  + this.general[i].listeCours[y].heureLabo;
-          this.semestre3HDD = this.semestre3HDD  + this.general[i].listeCours[y].heureDevoirs;
+        if (y == 2) {
+          this.semestre3HDC = this.semestre3HDC + this.general[i].listeCours[y].heureDeCours;
+          this.semestre3HDL = this.semestre3HDL + this.general[i].listeCours[y].heureLabo;
+          this.semestre3HDD = this.semestre3HDD + this.general[i].listeCours[y].heureDevoirs;
         }
-        if(y==3){
-          this.semestre4HDC = this.semestre4HDC  + this.general[i].listeCours[y].heureDeCours;
-          this.semestre4HDL = this.semestre4HDL  + this.general[i].listeCours[y].heureLabo;
-          this.semestre4HDD = this.semestre4HDD  + this.general[i].listeCours[y].heureDevoirs;
+        if (y == 3) {
+          this.semestre4HDC = this.semestre4HDC + this.general[i].listeCours[y].heureDeCours;
+          this.semestre4HDL = this.semestre4HDL + this.general[i].listeCours[y].heureLabo;
+          this.semestre4HDD = this.semestre4HDD + this.general[i].listeCours[y].heureDevoirs;
         }
       }
-
+    }
+    for (let i = 0; i < this.specifique.length; i++) {
       for (let y = 0; y < this.specifique[i].listeCours.length; y++) {
 
         if(y==0){
@@ -198,13 +198,8 @@ export class S4Component implements OnInit {
     this.totalS3=this.semestre3HDD+this.semestre3HDC+this.semestre3HDL
     this.totalS4=this.semestre4HDD+this.semestre4HDC+this.semestre4HDL
 
+    console.log(this.totalS1,this.totalS2,this.totalS3,this.semestre4HDD+this.semestre4HDC+this.semestre4HDL)
 
-  }
-
-  setNbCours(n:number){
-    this.nombreDeCours=n;
-    console.log(this.nombreDeCours)
-    this.form.reset();
   }
 
   counter(i: number) {
@@ -339,8 +334,6 @@ export class S4Component implements OnInit {
 
   modifS(matiere: categories) {
 
-      this.setNbCours(4)
-
       this.form = this.Formbuilder.group(
         {
           nomControl: [matiere.nom, Validators.required],
@@ -370,8 +363,6 @@ export class S4Component implements OnInit {
 
   modifG(matiere: categories) {
 
-    this.setNbCours(4)
-
     this.form = this.Formbuilder.group(
       {
         nomControl: [matiere.nom, Validators.required],
@@ -391,7 +382,7 @@ export class S4Component implements OnInit {
         hdd4Control: [matiere.listeCours[3].heureDevoirs],
         hdc4Control: [matiere.listeCours[3].heureDeCours],
         hdl4Control: [matiere.listeCours[3].heureLabo],
-        typeControl: [1, Validators.required],
+        typeControl: ['general', Validators.required],
         //couleurControl: ['', Validators.required]
       }
     )
