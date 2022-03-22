@@ -22,12 +22,108 @@
 
 <mat-tab-group mat-align-tabs="center">
 
-<mat-tab label="planning">
+  <mat-tab label="gestion de la grille">
+    <div class="container-fluid" style="margin-top: 30px">
+      <div class="row" >
+        <div style="align-self: flex-start!important;" class="col-4 align-content-center align-items-center align-self-center text-center">
+
+          <h1 style="text-align: center">Formulaire d'ajout/de modification de groupe</h1>
+
+          <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+            <mat-form-field class="example-full-width" appearance="fill" >
+              <mat-label style="color: black">Nom du groupe de cours</mat-label>
+              <input matInput id="nom" formControlName="nomControl">
+            </mat-form-field>
+
+            <h2>liste de cours</h2><br/><p>(ne remplisser que les champs que vous avez besoin)</p>
+
+
+            <div *ngFor="let in of counter(4);let i = index">
+              <div class="row">
+                <div class="col-6">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label style="color: black">sigle du cours {{i+1}} </mat-label>
+                    <input matInput value="" formControlName="mat{{i+1}}Control">
+                    <mat-hint align="start" *ngIf="i+1==1"><strong>Requis</strong> </mat-hint>
+
+                  </mat-form-field>
+                </div>
+                <div class="col-2">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label style="color: black">T</mat-label>
+                    <input matInput type="number" value="0" formControlName="hdc{{i+1}}Control">
+                  </mat-form-field>
+                </div>
+                <div class="col-2">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label style="color: black">P</mat-label>
+                    <input matInput type="number" value="0" formControlName="hdl{{i+1}}Control">
+                  </mat-form-field>
+                </div>
+                <div class="col-2">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label style="color: black">D</mat-label>
+                    <input matInput type="number" value="0" formControlName="hdd{{i+1}}Control">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <br/>
+            <h2>Catégorie de formation :</h2>
+
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="typeControl">
+              <mat-button-toggle value="1">general</mat-button-toggle>
+              <mat-button-toggle value="0">specifique</mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <h2>La couleur de cette categorie : <ngx-colors ngx-colors-trigger  formControlName="couleurControl"></ngx-colors></h2>
+
+            <br/>
+            <button mat-raised-button color="primary" >Valider</button>
+          </form>
+        </div>
+
+        <div class="col-8">
+          <h1 style="text-align: center">gestion des differents groupes de cours</h1>
+
+          <h2>Formation Specifique</h2>
+          <div *ngFor="let matiere of specifique" style="margin: 5px">
+            <mat-card>
+              <mat-card-header>{{matiere.nom}}</mat-card-header>
+              <mat-card-actions align="end">
+                <div style="background-color:{{matiere.couleur}};width:100%"></div>
+                <button mat-button (click)="modifS(matiere)">Modifier</button>
+                <button mat-button (click)="deleteS(matiere.nom)">Supprimer</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+
+          <h2>Formation Generale</h2>
+          <div *ngFor="let matiere of general" style="margin: 5px">
+            <mat-card>
+              <mat-card-header>{{matiere.nom}}</mat-card-header>
+              <mat-card-actions align="end">
+                <div style="color:{{matiere.couleur}};width:100%"></div>
+                <button mat-button (click)="modifG(matiere)">Modifier</button>
+                <button mat-button (click)="deleteG(matiere.nom)">Supprimer</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="grille">
   <div class="container-fluid" style="margin-top: 30px">
-    <h1 style="text-align: center">Planning de cours</h1>
+    <h1 style="text-align: center">Grille du programme</h1>
     <div class="example-list2 " >
 
-      <div class="example-box text-center align-self-center align-items-center align-content-center" style="margin: 20px">Semestre :
+      <div class="example-box text-center align-self-center align-items-center align-content-center" style="margin: 20px"><b>Session :</b>
         <div   class=" example-list" >
           <div class="example-box2"> Semestre 1<br></div>
           <div class="example-box2"> Semestre 2<br></div>
@@ -36,39 +132,39 @@
         </div>
       </div>
 
-      <div class="example-box text-center align-self-center align-items-center align-content-center"  *ngFor="let matiere of specifique">{{matiere.nom}}
+      <div class="example-box text-center align-self-center align-items-center align-content-center"  *ngFor="let matiere of specifique"><b>{{matiere.nom}}</b>
         <div cdkDropList class="example-list"  (cdkDropListDropped)="drop($event,matiere)">
           <div class="example-box2" style="background-color: {{matiere.couleur}}" *ngFor="let cours of matiere.listeCours" cdkDrag>
-            {{cours.nom}}<br/><div *ngIf="cours.heureDeCours!=0"> {{cours.heureDeCours}}<br/>{{cours.heureLabo}}<br/>{{cours.heureDevoirs}}</div>
+            {{cours.nom}}<br/><div *ngIf="cours.heureDeCours!=0">T : {{cours.heureDeCours}}<br/>P : {{cours.heureLabo}}<br/>D : {{cours.heureDevoirs}}</div>
           </div>
+
         </div>
       </div>
-
       <div style="margin:10px"></div>
 
-      <div class="example-box text-center align-self-center align-items-center align-content-center"  *ngFor="let matiere of general">{{matiere.nom}}
+      <div class="example-box text-center align-self-center align-items-center align-content-center"  *ngFor="let matiere of general"><b>{{matiere.nom}}</b>
         <div cdkDropList class="example-list"  (cdkDropListDropped)="drop($event,matiere)">
           <div class="example-box2" style="background-color: {{matiere.couleur}}" *ngFor="let cours of matiere.listeCours" cdkDrag>
-            {{cours.nom}}<br/><div *ngIf="cours.heureDeCours!=0"> {{cours.heureDeCours}}<br/>{{cours.heureLabo}}<br/>{{cours.heureDevoirs}}</div>
+            {{cours.nom}}<br/><div *ngIf="cours.heureDeCours!=0">T : {{cours.heureDeCours}}<br/>P : {{cours.heureLabo}}<br/>D : {{cours.heureDevoirs}}</div>
           </div>
+
+        </div>
+      </div>
+      <div  class="example-box text-center align-self-center align-items-center align-content-center" style="margin: 20px"><b>Sous total :</b>
+        <div   class=" example-list" >
+          <div   class="example-box2">T : {{semestre1HDC}}<br>P : {{semestre1HDL}}<br>D : {{semestre1HDD}} </div>
+          <div   class="example-box2">T : {{semestre2HDC}}<br>P : {{semestre2HDL}}<br>D : {{semestre2HDD}} </div>
+          <div   class="example-box2">T : {{semestre3HDC}}<br>P : {{semestre3HDL}}<br>D : {{semestre3HDD}} </div>
+          <div   class="example-box2">T : {{semestre4HDC}}<br>P : {{semestre4HDL}}<br>D : {{semestre4HDD}} </div>
         </div>
       </div>
 
-      <div  class="example-box text-center align-self-center align-items-center align-content-center" style="margin: 20px">Sous total :
+      <div  class="example-box text-center align-self-center align-items-center align-content-center" ><b>Total :</b>
         <div   class=" example-list" >
-          <div   class="example-box2"> {{semestre1HDC}}<br>{{semestre1HDL}}<br>{{semestre1HDD}} </div>
-          <div   class="example-box2"> {{semestre2HDC}}<br>{{semestre2HDL}}<br>{{semestre2HDD}} </div>
-          <div   class="example-box2"> {{semestre3HDC}}<br>{{semestre3HDL}}<br>{{semestre3HDD}} </div>
-          <div   class="example-box2"> {{semestre4HDC}}<br>{{semestre4HDL}}<br>{{semestre4HDD}} </div>
-        </div>
-      </div>
-
-      <div  class="example-box text-center align-self-center align-items-center align-content-center" >Total :
-        <div   class=" example-list" >
-          <div   class="example-box2"> {{this.totalS1}} </div>
-          <div   class="example-box2"> {{this.totalS2}} </div>
-          <div   class="example-box2"> {{this.totalS3}} </div>
-          <div   class="example-box2"> {{this.totalS4}} </div>
+          <div   class="example-box2">Ens : {{totalEnsS1}}<br/>Total : {{this.totalS1}} </div>
+          <div   class="example-box2">Ens : {{totalEnsS2}}<br/>Total : {{this.totalS2}} </div>
+          <div   class="example-box2">Ens : {{totalEnsS3}}<br/>Total : {{this.totalS3}} </div>
+          <div   class="example-box2">Ens : {{totalEnsS4}}<br/>Total : {{this.totalS4}} </div>
         </div>
       </div>
 
@@ -76,97 +172,4 @@
   </div>
 </mat-tab>
 
-<mat-tab label="gestion du planning">
-  <div class="container-fluid" style="margin-top: 30px">
-    <div class="row" >
-      <div style="align-self: flex-start!important;" class="col-4 align-content-center align-items-center align-self-center text-center">
-
-        <h1 style="text-align: center">Formulaire d'ajout/de modification de cours</h1>
-
-        <form [formGroup]="form" (ngSubmit)="onSubmit()" >
-          <mat-form-field class="example-full-width" appearance="fill" >
-            <mat-label style="color: black">Nom du cours </mat-label>
-            <input matInput id="nom" formControlName="nomControl">
-          </mat-form-field>
-
-          <h2>liste de cours</h2><br/><p>(ne remplisser que les champs que vous avez besoin)</p>
-
-
-          <div *ngFor="let in of counter(4);let i = index">
-            <div class="row">
-              <div class="col-6">
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label style="color: black">matricule du cours {{i+1}} </mat-label>
-                  <input matInput value="" formControlName="mat{{i+1}}Control">
-                  <mat-hint align="start" *ngIf="i+1==1"><strong>Requis</strong> </mat-hint>
-
-                </mat-form-field>
-              </div>
-              <div class="col-2">
-                <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label style="color: black">HDC</mat-label>
-                <input matInput type="number" value="0" formControlName="hdc{{i+1}}Control">
-                </mat-form-field>
-              </div>
-              <div class="col-2">
-                <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label style="color: black">HDL</mat-label>
-                <input matInput type="number" value="0" formControlName="hdl{{i+1}}Control">
-                </mat-form-field>
-              </div>
-              <div class="col-2">
-                <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label style="color: black">HDD</mat-label>
-                <input matInput type="number" value="0" formControlName="hdd{{i+1}}Control">
-                </mat-form-field>
-              </div>
-            </div>
-          </div>
-
-
-
-
-          <br/>
-          <h2>A quel type de cours appartient t'il : </h2>
-
-        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="typeControl">
-          <mat-button-toggle value="1">general</mat-button-toggle>
-          <mat-button-toggle value="0">specifique</mat-button-toggle>
-        </mat-button-toggle-group>
-
-          <h2>La couleur de cette categorie : <ngx-colors ngx-colors-trigger  formControlName="couleurControl"></ngx-colors></h2>
-
-        <br/>
-        <button mat-raised-button color="primary" >Valider</button>
-        </form>
-      </div>
-
-      <div class="col-8">
-        <h1 style="text-align: center">gestion des differentes categories</h1>
-
-        <h2>Categories Specifiques</h2>
-        <div *ngFor="let matiere of specifique" style="margin: 5px">
-          <mat-card>
-            <mat-card-header>{{matiere.nom}}</mat-card-header>
-            <mat-card-actions align="end">
-              <button mat-button (click)="modifS(matiere)">Modifier</button>
-              <button mat-button (click)="deleteS(matiere.nom)">Supprimer</button>
-            </mat-card-actions>
-          </mat-card>
-        </div>
-
-        <h2>Categories Generales</h2>
-        <div *ngFor="let matiere of general" style="margin: 5px">
-          <mat-card>
-            <mat-card-header>{{matiere.nom}}</mat-card-header>
-            <mat-card-actions align="end">
-              <button mat-button (click)="modifG(matiere)">Modifier</button>
-              <button mat-button (click)="deleteG(matiere.nom)">Supprimer</button>
-            </mat-card-actions>
-          </mat-card>
-        </div>
-      </div>
-    </div>
-  </div>
-</mat-tab>
 </mat-tab-group>

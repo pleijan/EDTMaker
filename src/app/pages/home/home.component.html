@@ -10,22 +10,26 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="justify-content-center">
 
       <mat-form-field class="example-full-width" appearance="fill" >
-        <mat-label style="color: black">Nom de l'emploi du temps </mat-label>
-        <input matInput id="nom" formControlName="nomControl">
+        <mat-label style="color: black">titre du programme </mat-label>
+        <input matInput id="nom" (change)="changementTitre()" formControlName="nomControl">
       </mat-form-field><br/>
 
       <mat-form-field class="example-full-width" appearance="fill" >
-        <mat-label style="color: black">code de l'emploi du temps </mat-label>
-        <input matInput id="code" formControlName="codeControl">
+        <mat-label style="color: black">code du programme </mat-label>
+        <input matInput id="code" (change)="changementCode()" formControlName="codeControl">
       </mat-form-field><br/>
 
       <div class="text-center justify-content-center align-self-center align-items-center">
         <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="tailleControl">
-          <mat-button-toggle value="1" checked>4 Semestre</mat-button-toggle>
-          <mat-button-toggle value="0">6 Semestre</mat-button-toggle>
+          <mat-button-toggle value="1" checked>4 Semestres</mat-button-toggle>
+          <mat-button-toggle value="0">6 Semestres</mat-button-toggle>
         </mat-button-toggle-group><br/>
 
-        <button mat-raised-button color="primary" style="margin: 20px">Valider</button>
+        <h1 style="padding-top: 20px"> le nom du fichier sera : </h1>
+
+        <p style="border: black;font-size: 15pt">{{nomDuFichier}}</p>
+
+        <button mat-raised-button color="primary" style="margin: 20px">Créer</button>
       </div>
     </form>
 

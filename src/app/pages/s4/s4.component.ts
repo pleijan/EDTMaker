@@ -53,6 +53,10 @@ export class S4Component implements OnInit {
   semestre2HDL:number = 0;
   semestre3HDL:number = 0;
   semestre4HDL:number = 0;
+  totalEnsS1:number = 0;
+  totalEnsS2:number = 0;
+  totalEnsS3:number = 0;
+  totalEnsS4:number = 0;
   totalS1:number = 0;
   totalS2:number = 0;
   totalS3:number = 0;
@@ -137,6 +141,11 @@ export class S4Component implements OnInit {
     this.semestre3HDL = 0;
     this.semestre4HDL = 0;
 
+    this.totalEnsS1 = 0;
+    this.totalEnsS2 = 0;
+    this.totalEnsS3 = 0;
+    this.totalEnsS4 = 0;
+
     this.totalS1 = 0;
     this.totalS2 = 0;
     this.totalS3 = 0;
@@ -197,6 +206,11 @@ export class S4Component implements OnInit {
     this.totalS2=this.semestre2HDD+this.semestre2HDC+this.semestre2HDL
     this.totalS3=this.semestre3HDD+this.semestre3HDC+this.semestre3HDL
     this.totalS4=this.semestre4HDD+this.semestre4HDC+this.semestre4HDL
+
+    this.totalEnsS1=this.semestre1HDC+this.semestre1HDL
+    this.totalEnsS2=this.semestre2HDC+this.semestre2HDL
+    this.totalEnsS3=this.semestre3HDC+this.semestre3HDL
+    this.totalEnsS4=this.semestre4HDC+this.semestre4HDL
 
     console.log(this.totalS1,this.totalS2,this.totalS3,this.semestre4HDD+this.semestre4HDC+this.semestre4HDL)
 

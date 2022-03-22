@@ -7,7 +7,14 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
+
+
 export class HomeComponent implements OnInit {
+  titre: String = "titre" ;
+  code: String = "code" ;
+  nomDuFichier: String = this.titre+"."+this.code+".NomDeVersion.json";
+
   form: FormGroup = new FormGroup({
     nomControl : new FormControl(''),
     codeControl  : new FormControl(''),
@@ -15,6 +22,8 @@ export class HomeComponent implements OnInit {
   })
 
   constructor(private Formbuilder: FormBuilder,private router: Router) { }
+
+
 
   ngOnInit(): void {
     this.form = this.Formbuilder.group(
@@ -31,5 +40,19 @@ export class HomeComponent implements OnInit {
 
     if (this.form.value.tailleControl == 1) this.router.navigate(['/s4'])
     else this.router.navigate(['/s6'])
+  }
+
+  changementTitre(){
+    this.titre=this.form.value.nomControl;
+    this.changement();
+  }
+
+  changementCode(){
+    this.code=this.form.value.codeControl;
+    this.changement();
+  }
+
+  changement(){
+    this.nomDuFichier=this.titre+"."+this.code+".NomDeVersion.json";
   }
 }
