@@ -294,6 +294,39 @@ export class S6Component implements OnInit {
     this.calculSemestre()
   }
 
+  reset(){
+    this.form = this.Formbuilder.group(
+      {
+        nomControl: ['', Validators.required],
+        mat1Control: ['', Validators.required],
+        hdd1Control: ['', Validators.required],
+        hdc1Control: ['', Validators.required],
+        hdl1Control: ['', Validators.required],
+        mat2Control: [""],
+        hdd2Control: [0],
+        hdc2Control: [0],
+        hdl2Control: [0],
+        mat3Control: [""],
+        hdd3Control: [0],
+        hdc3Control: [0],
+        hdl3Control: [0],
+        mat4Control: [""],
+        hdd4Control: [0],
+        hdc4Control: [0],
+        hdl4Control: [0],
+        mat5Control: [""],
+        hdd5Control: [0],
+        hdc5Control: [0],
+        hdl5Control: [0],
+        mat6Control: [""],
+        hdd6Control: [0],
+        hdc6Control: [0],
+        hdl6Control: [0],
+        typeControl: ['', Validators.required],
+      }
+    )
+  }
+
   onSubmit() {
     if (this.form.valid) {
 
@@ -397,7 +430,7 @@ export class S6Component implements OnInit {
       this._snackBar.open("le cours de "+this.form.value.nomControl+" a bien été importé", 'ok', {
         duration: 3000
       });
-      this.form.reset();
+      this.reset();
     }
     else this._snackBar.open("Il manque des informations pour créer le cours", 'ok', {
       duration: 3000
