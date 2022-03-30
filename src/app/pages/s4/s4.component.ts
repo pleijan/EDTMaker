@@ -30,6 +30,8 @@ export interface MetaData{
 })
 export class S4Component implements OnInit {
 
+  color: string = "#FFFFFF"
+
   form: FormGroup = new FormGroup({
     nomControl : new FormControl(''),
     Mat1Control  : new FormControl(''),
@@ -37,7 +39,6 @@ export class S4Component implements OnInit {
     hdl1Control  : new FormControl(''),
     hdd1Control  : new FormControl(''),
     typeControl  : new FormControl(''),
-    couleurControl  : new FormControl(''),
   })
 
 
@@ -68,7 +69,6 @@ export class S4Component implements OnInit {
 
   general:categories[]=[];
 
-  color: any;
   metadata: MetaData  = {
     nom: "",
     code: ""
@@ -111,7 +111,6 @@ export class S4Component implements OnInit {
         hdc4Control: [''],
         hdl4Control: [''],
         typeControl: ['', Validators.required],
-        couleurControl: ['', Validators.required]
       }
     )
   }
@@ -269,7 +268,7 @@ export class S4Component implements OnInit {
       if (this.form.value.typeControl == 0) {
         this.specifique.push(<categories>{
           nom: this.form.value.nomControl,
-          couleur: this.form.value.couleurControl,
+          couleur: this.color,
           listeCours: [{
             nom: this.form.value.mat1Control,
             heureDeCours: this.form.value.hdc1Control,
@@ -302,7 +301,7 @@ export class S4Component implements OnInit {
       } else {
         this.general.push(<categories>{
           nom: this.form.value.nomControl,
-          couleur: this.form.value.couleurControl,
+          couleur: this.color,
           listeCours: [{
             nom: this.form.value.mat1Control,
             heureDeCours: this.form.value.hdc1Control,
@@ -338,7 +337,7 @@ export class S4Component implements OnInit {
       this._snackBar.open("le cours de "+this.form.value.nomControl+" a bien été importé", 'ok', {
         duration: 3000
       });
-      this.form.reset();
+      this.reset();
     }
     else this._snackBar.open("Il manque des informations pour créer le cours", 'ok', {
       duration: 3000
@@ -347,6 +346,8 @@ export class S4Component implements OnInit {
   }
 
   modifS(matiere: categories) {
+
+    this.color = matiere.couleur;
 
       this.form = this.Formbuilder.group(
         {
@@ -377,6 +378,8 @@ export class S4Component implements OnInit {
 
   modifG(matiere: categories) {
 
+    this.color = matiere.couleur;
+
     this.form = this.Formbuilder.group(
       {
         nomControl: [matiere.nom, Validators.required],
@@ -397,7 +400,6 @@ export class S4Component implements OnInit {
         hdc4Control: [matiere.listeCours[3].heureDeCours],
         hdl4Control: [matiere.listeCours[3].heureLabo],
         typeControl: ['general', Validators.required],
-        //couleurControl: ['', Validators.required]
       }
     )
     this.deleteG(matiere.nom)
@@ -406,5 +408,33 @@ export class S4Component implements OnInit {
   accueil() {
     sessionStorage.clear()
     this.router.navigate(['/home'])
+  }
+
+  reset(){
+
+    this.color="#FFFFFF"
+
+    this.form = this.Formbuilder.group(
+      {
+        nomControl: ['', Validators.required],
+        mat1Control: ['', Validators.required],
+        hdd1Control: ['', Validators.required],
+        hdc1Control: ['', Validators.required],
+        hdl1Control: ['', Validators.required],
+        mat2Control: [""],
+        hdd2Control: [0],
+        hdc2Control: [0],
+        hdl2Control: [0],
+        mat3Control: [""],
+        hdd3Control: [0],
+        hdc3Control: [0],
+        hdl3Control: [0],
+        mat4Control: [""],
+        hdd4Control: [0],
+        hdc4Control: [0],
+        hdl4Control: [0],
+        typeControl: ['', Validators.required],
+      }
+    )
   }
 }

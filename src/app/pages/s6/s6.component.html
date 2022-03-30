@@ -19,7 +19,7 @@
   <mat-tab label="gestion de la grille">
     <div class="container-fluid" style="margin-top: 30px">
       <div class="row" >
-        <div style="align-self: flex-start!important;" class="col-4 align-content-center align-items-center align-self-center text-center">
+        <div style="align-self: flex-start!important; padding-bottom: 25px" class="col-4 align-content-center align-items-center align-self-center text-center">
 
           <h1 style="text-align: center">Formulaire d'ajout/de modification de groupe</h1>
 
@@ -67,15 +67,18 @@
 
 
             <br/>
-            <h2>Catégorie de formation :</h2>
+            <div class="example-box text-center align-self-center align-items-center align-content-center" >
 
-            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="typeControl">
-              <mat-button-toggle value="1">general</mat-button-toggle>
-              <mat-button-toggle value="0">specifique</mat-button-toggle>
-            </mat-button-toggle-group>
+              <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="typeControl">
+                <mat-button-toggle value="1">general</mat-button-toggle>
+                <mat-button-toggle value="0">specifique</mat-button-toggle>
+              </mat-button-toggle-group>
 
-            <h2>La couleur de cette categorie : <ngx-colors ngx-colors-trigger  formControlName="couleurControl"></ngx-colors></h2>
 
+              <br/>
+              <input style="margin-top: 20px" [(colorPicker)]="color" [style.background]="color"/>
+
+            </div>
             <br/>
             <button mat-raised-button color="primary" >Valider</button>
           </form>

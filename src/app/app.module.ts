@@ -24,6 +24,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { S6Component } from './pages/s6/s6.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { S6Component } from './pages/s6/s6.component';
         MatButtonToggleModule,
       MatSnackBarModule,
       RouterModule,
+      ColorPickerModule,
       AppRoutingModule
     ],
   providers: [],

@@ -29,6 +29,8 @@ export interface MetaData{
 })
 export class S6Component implements OnInit {
 
+  color: string = "#FFFFFF"
+
   form: FormGroup = new FormGroup({
     nomControl : new FormControl(''),
     Mat1Control  : new FormControl(''),
@@ -36,7 +38,6 @@ export class S6Component implements OnInit {
     hdl1Control  : new FormControl(''),
     hdd1Control  : new FormControl(''),
     typeControl  : new FormControl(''),
-    couleurControl  : new FormControl(''),
   })
 
   semestre1HDC:number = 0;
@@ -74,7 +75,6 @@ export class S6Component implements OnInit {
 
   general:categories[]=[];
 
-  color: any;
   metadata: MetaData  = {
     nom: "",
     code: ""
@@ -125,8 +125,7 @@ export class S6Component implements OnInit {
         hdd6Control: [''],
         hdc6Control: [''],
         hdl6Control: [''],
-        typeControl: ['', Validators.required],
-        couleurControl: ['', Validators.required]
+        typeControl: ['', Validators.required]
       }
     )
   }
@@ -295,6 +294,8 @@ export class S6Component implements OnInit {
   }
 
   reset(){
+    this.color="#FFFFFF"
+
     this.form = this.Formbuilder.group(
       {
         nomControl: ['', Validators.required],
@@ -333,7 +334,7 @@ export class S6Component implements OnInit {
       if (this.form.value.typeControl == 0) {
         this.specifique.push(<categories>{
           nom: this.form.value.nomControl,
-          couleur: this.form.value.couleurControl,
+          couleur: this.color,
           listeCours: [{
             nom: this.form.value.mat1Control,
             heureDeCours: this.form.value.hdc1Control,
@@ -379,7 +380,7 @@ export class S6Component implements OnInit {
         })
       } else {
         this.general.push(<categories>{
-          nom: this.form.value.nomControl,
+          nom: this.color,
           couleur: this.form.value.couleurControl,
           listeCours: [{
             nom: this.form.value.mat1Control,
@@ -440,6 +441,8 @@ export class S6Component implements OnInit {
 
   modifS(matiere: categories) {
 
+    this.color = matiere.couleur;
+
     this.form = this.Formbuilder.group(
       {
         nomControl: [matiere.nom, Validators.required],
@@ -476,6 +479,8 @@ export class S6Component implements OnInit {
   }
 
   modifG(matiere: categories) {
+
+    this.color = matiere.couleur;
 
     this.form = this.Formbuilder.group(
       {
