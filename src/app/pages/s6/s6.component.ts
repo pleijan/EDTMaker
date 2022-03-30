@@ -380,8 +380,8 @@ export class S6Component implements OnInit {
         })
       } else {
         this.general.push(<categories>{
-          nom: this.color,
-          couleur: this.form.value.couleurControl,
+          nom: this.form.value.nom,
+          couleur: this.color,
           listeCours: [{
             nom: this.form.value.mat1Control,
             heureDeCours: this.form.value.hdc1Control,
