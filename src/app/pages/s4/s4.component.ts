@@ -73,6 +73,7 @@ export class S4Component implements OnInit {
     nom: "",
     code: ""
   };
+  selectedIndex: number | undefined;
   constructor(private Formbuilder: FormBuilder,private _snackBar: MatSnackBar,private router: Router ) { }
 
   ngOnInit(): void {
@@ -436,5 +437,9 @@ export class S4Component implements OnInit {
         typeControl: ['', Validators.required],
       }
     )
+  }
+
+  Print() {
+    window.print()
   }
 }
