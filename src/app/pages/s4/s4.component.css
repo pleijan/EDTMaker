@@ -95,3 +95,54 @@ body{
   overflow: hidden;
   justify-content: center;
 }
+
+@media print {
+  .myDivToPrint {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 15px;
+    font-size: 10px;
+    line-height: 18px;
+
+  }
+
+  b{
+    font-size: 10px;
+  }
+
+  div{
+    font-size: 10px;
+  }
+
+  .example-list2 {
+    max-width: 100%;
+    border: solid 1px #ccc;
+    min-height: 40px;
+    display: flex;
+    flex-direction: row;
+    background: white;
+    border-radius: 2px;
+    overflow: hidden;
+    justify-content: center;
+  }
+
+  .example-box2 {
+    padding: 20px 10px;
+    border-bottom: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background: white;
+    font-size: 10px;
+    height: 100px;
+  }
+
+}

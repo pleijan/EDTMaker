@@ -13,14 +13,14 @@
   </button>
   <input class="hidden" type="file" id="upload-file" name="upload-file" accept=".json" (change)="import($event)">
 
-  <button mat-icon-button class="example-icon"  aria-label="Example icon-button with share icon">
-  <mat-icon>print</mat-icon>
-</button>
+  <button mat-icon-button class="example-icon"  aria-label="Example icon-button with share icon" (click)="tabGroup.selectedIndex = 1;Print()">
+    <mat-icon>print</mat-icon>
+  </button>
 </mat-toolbar>
 
 
 
-<mat-tab-group mat-align-tabs="center">
+<mat-tab-group mat-align-tabs="center" #tabGroup class="myDivToPrint">
 
   <mat-tab label="gestion de la grille">
     <div class="container-fluid" style="margin-top: 30px">
@@ -121,8 +121,8 @@
     </div>
   </mat-tab>
 
-  <mat-tab label="grille">
-  <div class="container-fluid" style="margin-top: 30px">
+  <mat-tab label="grille" >
+  <div class="container-fluid" style="margin-top: 30px" class="myDivToPrint">
     <h1 style="text-align: center">Grille du programme</h1>
     <div class="example-list2 " >
 
@@ -138,7 +138,7 @@
       <div class="example-box text-center align-self-center align-items-center align-content-center"  *ngFor="let matiere of specifique"><b>{{matiere.nom}}</b>
         <div cdkDropList class="example-list"  (cdkDropListDropped)="drop($event,matiere)">
           <div class="example-box2" style="background-color: {{matiere.couleur}}" *ngFor="let cours of matiere.listeCours" cdkDrag>
-            {{cours.nom}}<br/><div *ngIf="cours.heureDeCours!=0">T : {{cours.heureDeCours}}<br/>P : {{cours.heureLabo}}<br/>D : {{cours.heureDevoirs}}</div>
+            {{cours.nom}}<br/><div *ngIf="cours.heureDeCours!=0">T : {{cours.heureDeCours}}<br/>P : {{cours.heureLabo}}<br/>D : {{cours.heureDevoirs}}<br/> </div>
           </div>
 
         </div>
@@ -148,12 +148,12 @@
       <div class="example-box text-center align-self-center align-items-center align-content-center"  *ngFor="let matiere of general"><b>{{matiere.nom}}</b>
         <div cdkDropList class="example-list"  (cdkDropListDropped)="drop($event,matiere)">
           <div class="example-box2" style="background-color: {{matiere.couleur}}" *ngFor="let cours of matiere.listeCours" cdkDrag>
-            {{cours.nom}}<br/><div *ngIf="cours.heureDeCours!=0">T : {{cours.heureDeCours}}<br/>P : {{cours.heureLabo}}<br/>D : {{cours.heureDevoirs}}</div>
+            {{cours.nom}}<br/><div *ngIf="cours.heureDeCours!=0">T : {{cours.heureDeCours}}<br/>P : {{cours.heureLabo}}<br/>D : {{cours.heureDevoirs}}<br/> </div>
           </div>
 
         </div>
       </div>
-      <div  class="example-box text-center align-self-center align-items-center align-content-center" style="margin: 20px"><b>Sous total :</b>
+      <div  class="example-box text-center align-self-center align-items-center align-content-center" ><b>Sous total :</b>
         <div   class=" example-list" >
           <div   class="example-box2">T : {{semestre1HDC}}<br>P : {{semestre1HDL}}<br>D : {{semestre1HDD}} </div>
           <div   class="example-box2">T : {{semestre2HDC}}<br>P : {{semestre2HDL}}<br>D : {{semestre2HDD}} </div>
@@ -173,6 +173,8 @@
 
     </div>
   </div>
+
+
 </mat-tab>
 
 </mat-tab-group>
