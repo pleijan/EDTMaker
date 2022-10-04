@@ -97,6 +97,11 @@ body{
 }
 
 @media print {
+
+  @page{
+    size: A4 landscape;
+  }
+
   .myDivToPrint {
     background-color: white;
     height: 100%;
