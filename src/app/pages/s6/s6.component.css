@@ -96,6 +96,10 @@ body{
   justify-content: center;
 }
 
+.myDivToOnlyPrint{
+  visibility: hidden;
+}
+
 @media print {
 
   @page{
