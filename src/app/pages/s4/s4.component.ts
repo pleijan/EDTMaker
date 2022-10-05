@@ -232,7 +232,7 @@ export class S4Component implements OnInit {
 
   import($event: Event){
 
-    const data = require("./EmploiDuTemps.INFO.json")
+    const data = require("./EmploiDuTemps_INFO_S4.json")
 
     this.metadata = data[0]
     this.general = data[1]

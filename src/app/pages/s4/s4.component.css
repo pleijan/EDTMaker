@@ -96,6 +96,10 @@ body{
   justify-content: center;
 }
 
+.myDivToOnlyPrint{
+  visibility: hidden;
+}
+
 @media print {
 
   @page{
@@ -149,5 +153,7 @@ body{
     font-size: 10px;
     height: 100px;
   }
-
+  .myDivToOnlyPrint{
+    visibility: visible;
+  }
 }

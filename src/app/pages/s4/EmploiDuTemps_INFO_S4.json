@@ -5,75 +5,6 @@
         "nbSemestre": 4
     },
     [
-
-        {
-            "nom": "Anglais",
-            "couleur": "#FFFFFF",
-            "listeCours": [
-                {
-                    "nom": "ANG1",
-                    "heureDeCours": 3,
-                    "heureLabo": 6,
-                    "heureDevoirs": 2,
-                    "optionnel": false
-                },
-                {
-                    "nom": "ANG2",
-                    "heureDeCours": 3,
-                    "heureLabo": 6,
-                    "heureDevoirs": 2,
-                    "optionnel": false
-                },
-                {
-                    "nom": " ",
-                    "heureDeCours": 0,
-                    "heureLabo": 0,
-                    "heureDevoirs": 0,
-                    "optionnel": false
-                },
-                {
-                    "nom": " ",
-                    "heureDeCours": 0,
-                    "heureLabo": 0,
-                    "heureDevoirs": 0,
-                    "optionnel": false
-                }
-            ]
-        },
-        {
-            "nom": "Philosophie",
-            "couleur": "#FFFFFF",
-            "listeCours": [
-                {
-                    "nom": "PHI1",
-                    "heureDeCours": 4,
-                    "heureLabo": 7,
-                    "heureDevoirs": 2,
-                    "optionnel": false
-                },
-                {
-                    "nom": "PHI2",
-                    "heureDeCours": 3,
-                    "heureLabo": 6,
-                    "heureDevoirs": 2,
-                    "optionnel": false
-                },
-                {
-                    "nom": "PHI3",
-                    "heureDeCours": 3,
-                    "heureLabo": 6,
-                    "heureDevoirs": 2,
-                    "optionnel": false
-                },
-                {
-                    "nom": " ",
-                    "heureDeCours": 0,
-                    "heureLabo": 0,
-                    "heureDevoirs": 0,
-                    "optionnel": false
-                }
-            ]
-        },
         {
             "nom": "Complementaire",
             "couleur": "#FFFFFF",
@@ -109,8 +40,76 @@
             ]
         },
         {
+            "nom": "Anglais",
+            "couleur": "#e688ff",
+            "listeCours": [
+                {
+                    "nom": "ANG1",
+                    "heureDeCours": 3,
+                    "heureLabo": 6,
+                    "heureDevoirs": 2,
+                    "optionnel": false
+                },
+                {
+                    "nom": "ANG2",
+                    "heureDeCours": 3,
+                    "heureLabo": 6,
+                    "heureDevoirs": 2,
+                    "optionnel": false
+                },
+                {
+                    "nom": " ",
+                    "heureDeCours": 0,
+                    "heureLabo": 0,
+                    "heureDevoirs": 0,
+                    "optionnel": false
+                },
+                {
+                    "nom": " ",
+                    "heureDeCours": 0,
+                    "heureLabo": 0,
+                    "heureDevoirs": 0,
+                    "optionnel": false
+                }
+            ]
+        },
+        {
+            "nom": "Philosophie",
+            "couleur": "#6affb8",
+            "listeCours": [
+                {
+                    "nom": "PHI1",
+                    "heureDeCours": 4,
+                    "heureLabo": 7,
+                    "heureDevoirs": 2,
+                    "optionnel": false
+                },
+                {
+                    "nom": "PHI2",
+                    "heureDeCours": 3,
+                    "heureLabo": 6,
+                    "heureDevoirs": 2,
+                    "optionnel": false
+                },
+                {
+                    "nom": "PHI3",
+                    "heureDeCours": 3,
+                    "heureLabo": 6,
+                    "heureDevoirs": 2,
+                    "optionnel": false
+                },
+                {
+                    "nom": " ",
+                    "heureDeCours": 0,
+                    "heureLabo": 0,
+                    "heureDevoirs": 0,
+                    "optionnel": false
+                }
+            ]
+        },
+        {
             "nom": "Education physique",
-            "couleur": "#FFFFFF",
+            "couleur": "#ffc242",
             "listeCours": [
                 {
                     "nom": "EDU1",
@@ -180,7 +179,7 @@
         },
         {
             "nom": "Physique",
-            "couleur": "#FFFFFF",
+            "couleur": "#f7ff3e",
             "listeCours": [
                 {
                     "nom": "PHY1",
@@ -208,47 +207,13 @@
                     "heureDeCours": 4,
                     "heureLabo": 6,
                     "heureDevoirs": 2,
-                    "optionnel": true
-                }
-            ]
-        },
-        {
-            "nom": "Chimie",
-            "couleur": "#FFFFFF",
-            "listeCours": [
-                {
-                    "nom": "CHI1",
-                    "heureDeCours": 5,
-                    "heureLabo": 8,
-                    "heureDevoirs": 2,
-                    "optionnel": false
-                },
-                {
-                    "nom": "CHI2",
-                    "heureDeCours": 4,
-                    "heureLabo": 6,
-                    "heureDevoirs": 2,
-                    "optionnel": false
-                },
-                {
-                    "nom": "CHIF",
-                    "heureDeCours": 5,
-                    "heureLabo": 8,
-                    "heureDevoirs": 2,
-                    "optionnel": true
-                },
-                {
-                    "nom": " ",
-                    "heureDeCours": 0,
-                    "heureLabo": 0,
-                    "heureDevoirs": 0,
                     "optionnel": false
                 }
             ]
         },
         {
             "nom": "Biologie",
-            "couleur": "#FFFFFF",
+            "couleur": "#f4ff53",
             "listeCours": [
                 {
                     "nom": "BIO1",
@@ -269,7 +234,7 @@
                     "heureDeCours": 4,
                     "heureLabo": 6,
                     "heureDevoirs": 2,
-                    "optionnel": true
+                    "optionnel": false
                 },
                 {
                     "nom": " ",
@@ -282,7 +247,7 @@
         },
         {
             "nom": "Informatique",
-            "couleur": "#FFFFFF",
+            "couleur": "#1ebdff",
             "listeCours": [
                 {
                     "nom": "INF1",
@@ -303,6 +268,40 @@
                     "heureDeCours": 0,
                     "heureLabo": 0,
                     "heureDevoirs": 0,
+                    "optionnel": false
+                },
+                {
+                    "nom": " ",
+                    "heureDeCours": 0,
+                    "heureLabo": 0,
+                    "heureDevoirs": 0,
+                    "optionnel": false
+                }
+            ]
+        },
+        {
+            "nom": "Chimie",
+            "couleur": "#93ff0f",
+            "listeCours": [
+                {
+                    "nom": "CHI1",
+                    "heureDeCours": 5,
+                    "heureLabo": 8,
+                    "heureDevoirs": 2,
+                    "optionnel": false
+                },
+                {
+                    "nom": "CHI2",
+                    "heureDeCours": 4,
+                    "heureLabo": 6,
+                    "heureDevoirs": 2,
+                    "optionnel": false
+                },
+                {
+                    "nom": "CHIF",
+                    "heureDeCours": 5,
+                    "heureLabo": 8,
+                    "heureDevoirs": 2,
                     "optionnel": false
                 },
                 {

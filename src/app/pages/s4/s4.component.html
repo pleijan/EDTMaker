@@ -123,7 +123,7 @@
 
   <mat-tab label="grille" >
   <div class="container-fluid" style="margin-top: 30px" class="myDivToPrint">
-    <h1 style="text-align: center">Grille du programme</h1>
+    <h1 style="text-align: center">Grille du programme <h1 class="myDivToOnlyPrint">{{metadata?.nom}}.{{metadata?.code}}</h1></h1>
     <div class="example-list2 " >
 
       <div class="example-box text-center align-self-center align-items-center align-content-center" style="margin: 20px"><b>Session :</b>
@@ -172,18 +172,22 @@
       </div>
 
     </div>
-  </div>
 
-
-    <div class="row">
-      <div class="col-6 align-items-center">
-        <img src="favicon.ico"/>
+    <div class="row myDivToOnlyPrint align-items-center" style="margin-top: 50px">
+      <div class="col-6 " style="padding-left: 200px">
+        <img class="justify-content-center" style="width: 150px" src="assets/logocegep.jpg"/>
       </div>
-      <div class="col-6 align-items-center invisible">
-        <div class="border" style="width: 200px; heigth: 100px"></div>
+      <div class="col-6" style="padding-left: 200px">
+        <div class="border" style="width: 150px; padding-bottom: 50px">
+          <p>signez ici :</p>
+        </div>
       </div>
     </div>
-    
+  </div>
 </mat-tab>
 
 </mat-tab-group>
+
+
+
+
